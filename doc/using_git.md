@@ -293,7 +293,7 @@ If you want to work with an existing project, clone it:
 
     $ git clone <url>
 
-If you do not have an existing git project, create one:
+If you do not have an existing Git project, create one:
 
     $ cd project/
     $ git init
@@ -339,14 +339,14 @@ The basic Git workflow goes something like this:
 3. You do a commit, which takes the files as they are in the staging area and
    stores that snapshot permanently to your Git directory.
 
-If a particular version of a file is in the git directory, it's considered
+If a particular version of a file is in the Git directory, it's considered
 committed. If it's modified but has been added to the staging area, it is
 staged. And if it was changed since it was checked out but has not been
 staged, it is modified.
 
 ## Simple daily workflow
 
-When dealing with git, it's best to work in small bits. Rule of thumb: if you
+When dealing with Git, it's best to work in small bits. Rule of thumb: if you
 can't summarise it in a sentence, you've gone too long without committing. A
 typical work cycle would be:
 
@@ -384,8 +384,8 @@ typical work cycle would be:
 
         $ git rm file
 
-8. You can also remove a file from git, but still keep it in your working
-   directory (now the file is not tracked by git):
+8. You can also remove a file from Git, but still keep it in your working
+   directory (now the file is not tracked by Git):
 
         $ git rm --cached -- file
 
@@ -570,7 +570,7 @@ To view the changes between the 1st and 2nd commits, type:
 
 To view the last changes you made:
 
-    git diff HEAD^..HEAD
+    $ git diff HEAD^..HEAD
 
 To view the changes between `commit1` and the common ancestor of `commit1` and
 `commit2`:
@@ -585,21 +585,21 @@ You can find more info on this
 Haven't committed yet, but don't want to save the changes? You can throw them
 away:
 
-    git reset --hard HEAD
+    $ git reset --hard HEAD
 
 You can also do it for individual files, but it's a bit different:
 
-    git checkout HEAD -- myfile.txt
+    $ git checkout HEAD -- myfile.txt
 
 Messed up the commit message? This will let you re-enter it:
 
-    git commit --amend
+    $ git commit --amend
 
 Forgot something in your last commit? That's easy to fix.
 
-    git reset --soft HEAD^
-    git add "files you forgot"
-    git commit
+    $ git reset --soft HEAD^
+    $ git add "files you forgot"
+    $ git commit
 
 Don't make a habit of overwriting/changing history if it's a public repo
 you're working with, though.
@@ -784,7 +784,7 @@ Then merge the branch changes:
     $ git merge testing
 
 This will combine the changes of the `master` and `testing` branches. If you
-didn't change the `master` branch, git will just *fast-forward* the `testing`
+didn't change the `master` branch, Git will just *fast-forward* the `testing`
 changes so master is up to date. Otherwise, the changes from master and
 `testing` will be combined.
 
@@ -965,7 +965,7 @@ If you want to read about a successful Git branching model, follow this
 
 ## Collaborating with GitHub
 
-Coding with git backing you up is really cool because you can so easily work
+Coding with Git backing you up is really cool because you can so easily work
 on multiple topics at the same time efficiently.
 
 You got a cool new idea and start working on it. You modify some files. You
@@ -981,7 +981,7 @@ Now you fix the bug, commit the fix and publish it to your fork where others
 can access it. Now you can apply your saved away changes and continue working
 on it:
 
-    git stash apply topic_XY
+    $ git stash apply topic_XY
 
 ### Commit early and commit often
 
@@ -996,7 +996,7 @@ knows from reading the message what the commit changes.
 You can select the files that you want to commit, compare against the local
 repository what changes you made and comment your changes in the commit
 message. Of course it can also be done on the command line interface First
-stage all changes you want to commit by using git add.
+stage all changes you want to commit by using `git add`.
 
 If you don't want to stage all changes in a file but only certain hunks, use
 the interactive mode
@@ -1005,18 +1005,18 @@ the interactive mode
 
 or the patch mode
 
-    $ git add --patch [FILES...]
+    $ git add --patch <files>
 
 Now check if everything has been added or if you missed something
 
-    git status
+    $ git status
 
 Always keep in mind that errors happen all the time. If it is later necessary
 to revert certain changes because they broke something else's code then
 reverting a small commit is easy and not much of a problem. If the change to
 be reverted is mixed up with lots of other changes the reverting of such a
 commit will be a painful night mare. If you have already committed a "monster
-commit" to your local repo then don't worry. With git it is no problem to
+commit" to your local repo then don't worry. With Git it is no problem to
 rewrite the commit history.
 
 Here are some examples of commit messages for some unrelated changes that
@@ -1095,7 +1095,6 @@ may take some time. Commits that have already been applied to the main line
 and thus are possibly already distributed over many contributor's private
 repositories errors can only be fixed by making new commits that revert the
 erroneous commit's changes but not by fixing the commit object directly.
-[edit] Correcting errors in private unpublished commits
 
 In your private repository you are god. You can completely rewrite the
 history, but you shouldn't touch commits that have already been published and
@@ -1105,7 +1104,7 @@ you pull or you cause others a lot of trouble when they want to pull from you.
 Exemplary errors and fixes are:
 
 * Forgot something in the last commit --> Amend
-* Commited too much, like to split up into multiple commits --> Soft Reset
+* Committed too much, like to split up into multiple commits --> Soft Reset
 * Things went so wrong that you want to throw some commits away --> Hard Reset
 
 > If you rewrite history which has already been pushed remote then you need to
@@ -1116,7 +1115,7 @@ Exemplary errors and fixes are:
 
 ### Correcting errors in your public remote repository
 
-Yes, git can do that too. But beware, as you can guess, much trouble can be
+Yes, Git can do that too. But beware, as you can guess, much trouble can be
 caused by rewriting history that others have already based their work on. Only
 do this, if you are sure that no one has yet pulled the commits you want to
 change.
@@ -1125,27 +1124,27 @@ First of all, fix your local repository as described in the previous section.
 After that you can force your public repository to the new revision history.
 If the public repository is configured to allow forced pushes then simply do:
 
-    git push -f origin develop
+    $ git push -f origin develop
 
 If the remote repository rejects a forced push there is still a trick, but it
 might take a little longer for big repositories (so beware):
 
-    git push origin :develop
-    git push origin develop
+    $ git push origin :develop
+    $ git push origin develop
 
 To understand what's happening here you should know that push allows to push
 from one branch to the other with the following notation
-`local_branch:remote_branch`. A normal `git push origin develop` is a shortcut for
-`git push origin develop:develop`. If you leave the local branch blank it will
-delete the remote branch. The second push will then recreate it and transport
-your complete rewritten revision history to the remote repository.
+`local_branch:remote_branch`. A normal `git push origin develop` is a shortcut
+for `git push origin develop:develop`. If you leave the local branch blank it
+will delete the remote branch. The second push will then recreate it and
+transport your complete rewritten revision history to the remote repository.
 
 ## Normal workflow
 
 As said, all development work is done under the `develop` branch. So, you
 should check you have a `develop` local branch:
 
-    S git branch
+    $ git branch
 
     * master
       develop
@@ -1155,7 +1154,7 @@ First check the remote branches (if you don't have the `upstream` remote
 repository, read *Following the official Analyser repository* almost at the
 beginning of this guide):
 
-    S git branch -r
+    $ git branch -r
 
     origin/master
     upstream/develop
@@ -1294,7 +1293,7 @@ To see all the commits in the `feature` branch since it was created
 To see all the new commits in the `develop` branch since you created the
 `feature` branch:
 
-    # git log feature..develop
+    $ git log feature..develop
 
 ### Rewriting history
 
@@ -1376,7 +1375,7 @@ like this:
 
 ### Solving conflicts
 
-When a merge isn't resolved automatically, git leaves the index and the
+When a merge isn't resolved automatically, Git leaves the index and the
 working tree in a special state that gives you all the information you need to
 help resolve the merge.
 
@@ -1477,7 +1476,7 @@ If you need more extensive help, you can see
 
 [analysis-repo]: http://github.com/usm-data-analysis/Analyser "Analyser"
 [usm-user]: http://github.com/usm-data-analysis "usm-data-analysis"
-[coding]: http://github.com/usm-data-analysis/Analyser/blob/master/doc/coding_conventions.md "Coding Conventions"
+[coding]: http://github.com/usm-data-analysis/Analyser/blob/develop/doc/coding_conventions.md "Coding Conventions"
 [wiki]: http://wiki.github.com/usm-data-analysis/Analyser "Analyser wiki"
 [issues]: http://github.com/usm-data-analysis/Analyser/issues "Analyser issues"
 [list]: http://groups.google.com/group/usm-fis-data-analysis "Mailing List"
