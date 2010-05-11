@@ -40,9 +40,23 @@ const Double_t kFidPar1High1[6] = {2        ,0.966175     ,2          ,0.192701 
 const Double_t kFidPar1High2[6] = {-2       ,-2           ,-1.70021   ,-1.27578  ,-0.233492 ,-2};
 const Double_t kFidPar1High3[6] = {0.5      ,0.527823     ,0.68655    ,1.6       ,1.6       ,0.70261};
 
+//mass constants en MeV/c^2
+const Double_t massPi_plus = 139.57018;
+const Double_t massPi_min = 139.57018;
+const Double_t massPi_zero = 134.9766;
+const Double_t massKaon_plus = 493.667;
+const Double_t massKaon_min = 493.667;
+const Double_t massKaon_zero = 497.648;
+const Double_t massMeu = 105.65836;
+const Double_t massAntiMeu = 105.65836;
+const Double_t massGamma = 0;
+const Double_t massProton = 938.272013;
+const Double_t massAntiProton = 938;
+const Double_t massNeutron = 939.565560;
+const Double_t massDeuterium = 0; 
 
 //ClassImp(TIdentificator);
-
+	
 
 
 TIdentificator::TIdentificator(TClasTool *CT)
@@ -112,181 +126,6 @@ Double_t TIdentificator::Pz(Int_t k, Bool_t kind)
 
 
 
-Double_t TIdentificator::Nphe(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if(fEVNT->Ccstat >= 1) {
-        Int_t ccst = fEVNT->Ccstat - 1;
-        fCCPB = (TCCPBClass *) fCT->GetBankRow("CCPB", ccst);
-        return fCCPB->Nphe;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::Chi2CC(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if (fEVNT->Ccstat >=1) {
-        Int_t cc_stat = fEVNT->Ccstat - 1;
-        fCCPB = (TCCPBClass *) fCT->GetBankRow("CCPB", cc_stat);
-        return fCCPB->Chi2cc;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::CCStatus(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if (fEVNT->Ccstat >= 1) {
-        Int_t cc_stat = fEVNT->Ccstat - 1;
-        fCCPB = (TCCPBClass *) fCT->GetBankRow("CCPB", cc_stat);
-        return fCCPB->Status;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::DCStatus(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-    if (fEVNT->Dcstat >= 1) {
-        Int_t dc_stat = fEVNT->Dcstat - 1;
-        fDCPB = (TDCPBClass *) fCT->GetBankRow("DCPB", dc_stat);
-        return fDCPB->Status;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::Etot(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if (fEVNT->Ecstat >= 1) {
-        Int_t ec_stat= fEVNT->Ecstat - 1;
-        fECPB = (TECPBClass *) fCT->GetBankRow("ECPB", ec_stat);
-        return fECPB->Etot;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::Ein(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if (fEVNT->Ecstat >= 1) {
-        Int_t ec_stat= fEVNT->Ecstat - 1;
-        fECPB = (TECPBClass *) fCT->GetBankRow("ECPB", ec_stat);
-        return fECPB->Ein;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::Eout(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if (fEVNT->Ecstat >= 1) {
-        Int_t ec_stat= fEVNT->Ecstat - 1;
-        fECPB = (TECPBClass *) fCT->GetBankRow("ECPB", ec_stat);
-        return fECPB->Eout;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::ECStatus(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-    if (fEVNT->Ecstat >= 1) {
-        Int_t ec_stat = fEVNT->Ecstat - 1;
-        fECPB = (TECPBClass *) fCT->GetBankRow("ECPB", ec_stat);
-        return fECPB->Status;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::PathSC(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if (fEVNT->Scstat >= 1) {
-        Int_t sc_stat = fEVNT->Scstat - 1;
-        fSCPB = (TSCPBClass *) fCT->GetBankRow("SCPB", sc_stat);
-        return fSCPB->Path;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::TimeSC(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if (fEVNT->Scstat >= 1) {
-        Int_t sc_stat = fEVNT->Scstat - 1;
-        fSCPB = (TSCPBClass *) fCT->GetBankRow("SCPB", sc_stat);
-        return fSCPB->Time;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::EdepSC(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if (fEVNT->Scstat >= 1) {
-        Int_t sc_stat = fEVNT->Scstat - 1;
-        fSCPB = (TSCPBClass *) fCT->GetBankRow("SCPB", sc_stat);
-        return fSCPB->Edep;
-    } else {
-        return kGOOD;
-    }
-}
-
-
-
-Double_t TIdentificator::SCStatus(Int_t k)
-{
-    fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-
-    if (fEVNT->Scstat >= 1) {
-        Int_t sc_stat = fEVNT->Scstat -1;
-        fSCPB = (TSCPBClass *) fCT->GetBankRow("SCPB", sc_stat);
-        return fSCPB->Status;
-    } else {
-        return kGOOD;
-    }
-}
 
 
 
@@ -522,8 +361,6 @@ Double_t TIdentificator::TimeCorr4(Double_t mass, Int_t k)
     return (PathSC(0)/30.) - TimeSC(0) + TimeSC(k) - 0.08 -
                 (PathSC(k) / 30.) * sqrt(pow(mass/Moment(k),2) + 1);
 }
-
-
 
 TString TIdentificator::GetCategorization(Int_t k)
 {
