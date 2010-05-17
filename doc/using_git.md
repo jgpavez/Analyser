@@ -6,18 +6,20 @@ You **must** follow the coding conventions for the project. Every change you
 make to the code must be according to the established rules. A complete guide
 about this can be found in the [`coding_conventions.md`][coding] file.
 
-The mailing list (to be created soon) will be the official source of
-information and communication between the developers and the maintainer.
+The mailing list ([USM FIS Data Analysis Team][list]) will be the official
+source of information and communication between the developers and the
+maintainer.
 
 Please **use** the [wiki][wiki]. It is a good place to put information that
-everyone must know, and it can be checked anytime. A very good use will be
-writing physics stuff useful for developers, or some programming guidelines to
-do things better.
+everyone must know, and it can be checked anytime. A very good use would be
+to write physics information useful for developers or some programming
+guidelines to do things better.
 
 If you find some issue or bug, or something that must be discussed, or some
 future development *to be done*, make sure of **open** an [issue][issues] for
 it. The mailing list is also a good place to share your thoughts about
 development.
+
 
 ## Integration-manager workflow
 
@@ -52,20 +54,21 @@ changes -- each party can work at their own pace.
 This section is from [ProGit](http://progit.org) book. You can read more about
 distributed workflows [here](http://progit.org/book/ch5-1.html).
 
+
 ## Installing and configuring Git
 
-First you must create a free account in [GitHub](http://github.com "GitHub").
-You also need a ssh key for connecting the Git server (you can found the
+First you must create a free account on [GitHub](http://github.com "GitHub").
+You also need a ssh key for connecting to the Git server (you can found the
 instructions [here](http://help.github.com/linux-key-setup "SSH key")). Then,
 if you use Ubuntu or another Debian derivative, type in a terminal:
 
     $ sudo aptitude install git-core
 
-This installs the `git` command line to manage your repositories. You must
-configure your setting:
+This installs the `git` command line to manage your repositories. You have to
+configure your settings:
 
-    $ git config --global user.name YOUR_USERNAME
-    $ git config --global user.email YOUR_MAIL
+    $ git config --global user.name YOUR_GITHUB_USERNAME
+    $ git config --global user.email THE_MAIL_YOU_USE_ON_GITHUB
 
 Also you **must** set this, for dealing with line endings:
 
@@ -76,7 +79,7 @@ Now you can fork the [Analyser][analysis-repo] repository.
 
 # Forking the official Analyser repository
 
-The first thing you must do is to create your fork of the
+The first thing you have to do is to create your fork of the
 [`Analyser`][analysis-repo] repository. To do this, you just simply click the
 *fork* button on the project's page
 
@@ -86,9 +89,8 @@ When the process is finished, you have a repository in your account named
 `Analyser`. This is your own public repository, your fork (copy) of the
 original, and this is where you will publish your changes.
 
-## Getting your private clone of the fork
 
-### Clone your repository
+## Getting your private clone of the fork
 
 Now you need to clone your fork, to start working on it. Make sure you use the
 Private URL and **not** the Public one.
@@ -99,32 +101,34 @@ Or if you prefer to change the directory name:
 
     $ git clone git@github.com:YOUR_USER/Analyser.git DIRECTORY_NAME
 
-### If you already have a clone of smancill's Analysis_files repository
+The `Analyser` repository has two main branches: `master` and `develop`:
 
-The [`Analyser`][analysis-repo] repository of `usm-data-analysis` is a clone
-of the `Analysis_files` repository of `smancill`, with new commits, so if you
-cloned the old `Analysis_files` repository you can use that working copy and
-do the following to synchronize it with your fork:
+    $ git branch -r
 
-1. First you remove the `Analysis_files` repository from your remotes
+      origin/HEAD -> origin/master
+      origin/develop
+      origin/master
 
-        $ git remote rm origin
+But your local copy has only one, a `master` branch:
 
-2. Now add your fork as your new `origin` remote repository
+    $ git branch
 
-        $ git remote add origin git@github.com:YOUR_USER/Analyser.git
+    * master
 
-3. Get all the objects from your fork that you do not have yet in your local
-   repo
+So you need to track the `develop` remote branch to work on it:
 
-        $ git fetch origin
+    $ git checkout --track origin/develop
 
-4. Finally merge the `master` branch of your fork into your local `master` branch
+Now if you list the local branches you can see your new local branch:
 
-        $ git checkout master
-        $ git merge origin/master
+    $ git branch
 
-5. You must resolve any conflicts that may appear. Now you can continue your work.
+    * develop
+      master
+
+This is important. All the work is done in `develop`, and `master` will be
+used to keep stable and tested code, and it will remain unchanged most of the
+time.
 
 
 ## Following the official Analyser repository
@@ -143,12 +147,13 @@ Note that you used the public clone URL for upstream, so you can't push changes
 directly to it. You don't have permission to do that, which is why you're
 creating a fork in the first place.
 
+
 ## Pushing your changes
 
 Now that you've got the fork, you need to make a few changes and commit them
 locally. Once you've done this, it's time to push your updated branch.
 
-    $ git push origin master
+    $ git push origin develop
 
 After you've pushed your commit(s) you need to inform the integration manager
 of the changes so he can pull them into the blessed repo. From your project's
@@ -157,7 +162,8 @@ page, click the *pull request* button.
 ![Pull-request](http://github.com/usm-data-analysis/Analyser/raw/master/doc/img/pull-request.png)
 
 Fill in a note and pick who to send the request to (it should be the user
-`usm-data-analysis`).
+`usm-data-analysis` because he is the integration-manager).
+
 
 ## Pulling in upstream changes
 
@@ -165,9 +171,9 @@ Some time has passed, the upstream repo has changed and you want to update your
 fork before you submit a new patch. There are two ways to do this:
 
     $ git fetch upstream
-    $ git merge upstream/master
+    $ git merge upstream/develop
 
-    $ git pull upstream master
+    $ git pull upstream develop
 
 `git pull` is a more direct way, but the merge it performs can be confusing if
 the user doesn't expect it and a merge conflict results. `git fetch` will also
@@ -176,7 +182,7 @@ grab all branches, where `git pull` will only grab the one specified.
 If you have local commits that are not in the upstream branch, a normal merge
 will occur. If your local commits are in the upstream branch, a fast-forward
 merge will be done, moving your local branch to the same commit as
-`upstream/master`. If both repos have edits to the same location in the same
+`upstream/develop`. If both repos have edits to the same location in the same
 file, you may run into a merge conflict. Conflicts must be resolved by hand
 and a commit made to complete the merge.
 
@@ -186,6 +192,8 @@ pull request.
 You should always do the fetch and merge manually, instead of letting `git
 pull` do it for you. This can sometimes help avoid headaches caused by
 mysterious merge conflicts.
+
+
 
 
 # Basic Git
@@ -203,9 +211,10 @@ Every time you commit, or save the state of your project in Git, it basically
 takes a picture of what all your files look like at that moment and stores a
 reference to that snapshot.
 
+
 ## Concepts
 
-* **Repository:**   A *repository* is a collection of *commits*, each of which
+* **Repository:** A *repository* is a collection of *commits*, each of which
   is an archive of what the project's *working tree* looked like at a past
   date, whether on your machine or someone else's. It also defines `HEAD`,
   which identifies the branch or commit the current working tree stemmed from.
@@ -247,6 +256,7 @@ reference to that snapshot.
   commit only. This is referred to as a detached `HEAD`, and occurs, for
   example, if you check out a tag name.
 
+
 ## Git objects model
 
 Git has two data structures: a mutable index that caches information about the
@@ -269,7 +279,7 @@ The object database contains four types of objects:
   is used to store a digital signature of a commit object corresponding to a
   particular release of the data being tracked by Git.
 
-Conceptually, the data in your Git repository looks something like this:
+Conceptually, the data in your Git repository look something like this:
 
 ![Objects](http://github.com/usm-data-analysis/Analyser/raw/master/doc/img/objects-example.png "Stored objects in git")
 
@@ -286,13 +296,14 @@ Every time you commit, it moves forward automatically.
 
 ![Commits](http://github.com/usm-data-analysis/Analyser/raw/master/doc/img/master.png)
 
+
 ## Setting up a repository
 
 If you want to work with an existing project, clone it:
 
     $ git clone <url>
 
-If you do not have an existing git project, create one:
+If you do not have an existing Git project, create one:
 
     $ cd project/
     $ git init
@@ -307,6 +318,7 @@ which contains a set of shell patterns to ignore in file paths.
 
 Now you can start using your repository.
 
+
 ## Getting help
 
 If you ever need help while using Git, there are three ways to get the manual
@@ -316,9 +328,10 @@ page help for any of the Git commands:
     $ git <verb> --help
     $ man git-<verb>
 
-For example, you can get the manpage help for the config command by running
+For example, you can get the manpage help for the `config` command by running
 
     $ git help config
+
 
 ## The three states
 
@@ -338,14 +351,15 @@ The basic Git workflow goes something like this:
 3. You do a commit, which takes the files as they are in the staging area and
    stores that snapshot permanently to your Git directory.
 
-If a particular version of a file is in the git directory, it's considered
+If a particular version of a file is in the Git directory, it's considered
 committed. If it's modified but has been added to the staging area, it is
 staged. And if it was changed since it was checked out but has not been
 staged, it is modified.
 
-## Simple daily workflow
 
-When dealing with git, it's best to work in small bits. Rule of thumb: if you
+## Daily workflow
+
+When dealing with Git, it's best to work in small bits. Rule of thumb: if you
 can't summarise it in a sentence, you've gone too long without committing. A
 typical work cycle would be:
 
@@ -383,12 +397,12 @@ typical work cycle would be:
 
         $ git rm file
 
-8. You can also remove a file from git, but still keep it in your working
-   directory (now the file is not tracked by git):
+8. You can also remove a file from Git, but still keep it in your working
+   directory (now the file is not tracked by Git):
 
-        $ git rm --cached -- file
+        $ git rm --cached file
 
-9. Check changes that you will commit:
+9. Check the changes that you will commit:
 
         $ git diff --staged
 
@@ -417,7 +431,6 @@ Repeat as much as you like. Just remember to always end with a commit.
 >
 > **This approach also makes it easier to pull out or revert one of the
 > changesets if you need to later.**
-
 
 More detailed explanation can be found
 [here](http://progit.org/book/ch2-2.html) and
@@ -559,9 +572,6 @@ know the commit ID for the changes:
 
 The 7 characters at the front of each line is the commit ID. You'll also see
 them when you commit. You can use it to show differences between commits.
-Remember that a branch is just a pointer to one commit, and `HEAD` always
-point to the first commit of the branch you are. So you can use a commit ID or
-a branch name to refer a commit.
 
 To view the changes between the 1st and 2nd commits, type:
 
@@ -569,7 +579,7 @@ To view the changes between the 1st and 2nd commits, type:
 
 To view the last changes you made:
 
-    git diff HEAD^..HEAD
+    $ git diff HEAD^..HEAD
 
 To view the changes between `commit1` and the common ancestor of `commit1` and
 `commit2`:
@@ -584,21 +594,21 @@ You can find more info on this
 Haven't committed yet, but don't want to save the changes? You can throw them
 away:
 
-    git reset --hard HEAD
+    $ git reset --hard HEAD
 
 You can also do it for individual files, but it's a bit different:
 
-    git checkout HEAD -- myfile.txt
+    $ git checkout HEAD -- myfile.txt
 
 Messed up the commit message? This will let you re-enter it:
 
-    git commit --amend
+    $ git commit --amend
 
 Forgot something in your last commit? That's easy to fix.
 
-    git reset --soft HEAD^
-    git add "files you forgot"
-    git commit
+    $ git reset --soft HEAD^
+    $ git add "files you forgot"
+    $ git commit
 
 Don't make a habit of overwriting/changing history if it's a public repo
 you're working with, though.
@@ -783,7 +793,7 @@ Then merge the branch changes:
     $ git merge testing
 
 This will combine the changes of the `master` and `testing` branches. If you
-didn't change the `master` branch, git will just *fast-forward* the `testing`
+didn't change the `master` branch, Git will just *fast-forward* the `testing`
 changes so master is up to date. Otherwise, the changes from master and
 `testing` will be combined.
 
@@ -878,6 +888,7 @@ More detailed info about branches and merges can be found
 [here](http://progit.org/book/ch3-0.html) or
 [here](http://book.git-scm.com/3_basic_branching_and_merging.html).
 
+
 ## Working with remotes
 
 To be able to collaborate on any Git project, you need to know how to manage
@@ -900,7 +911,7 @@ The command goes out to that remote project and pulls down all the data from
 that remote project that you don't have yet.
 
 When you have your project at a point that you want to share, you have to push
-it to your remote repository with: `git push [remote] [branch]`. To publish
+it to your remote repository with: `git push <remote> <branch>`. To publish
 your change in your private repository, you do
 
     $ git push origin master
@@ -911,7 +922,7 @@ Remote branches are references to the state of branches on your remote
 repositories. They're local branches that you can't move; they're moved
 automatically whenever you do any network communication.
 
-They take the form `(remote)/(branch)`. For instance, if you wanted to see what
+They take the form `<remote>/<branch>`. For instance, if you wanted to see what
 the `master` branch on your `origin` remote looked like as of the last time you
 communicated with it, you would check the `origin/master` branch.
 
@@ -928,6 +939,8 @@ repository, you shouldn't merge or make commits onto a tracking branch.
 
 A good explanation about remote branches is found
 [here](http://progit.org/book/ch3-5.html).
+
+
 
 
 # Developing the USM Data Analysis Project with Git
@@ -962,9 +975,10 @@ into the `master` branch, and you can fetch from his repository the new state.
 If you want to read about a successful Git branching model, follow this
 [link](http://nvie.com/git-model).
 
+
 ## Collaborating with GitHub
 
-Coding with git backing you up is really cool because you can so easily work
+Coding with Git backing you up is really cool because you can so easily work
 on multiple topics at the same time efficiently.
 
 You got a cool new idea and start working on it. You modify some files. You
@@ -980,7 +994,7 @@ Now you fix the bug, commit the fix and publish it to your fork where others
 can access it. Now you can apply your saved away changes and continue working
 on it:
 
-    git stash apply topic_XY
+    $ git stash apply topic_XY
 
 ### Commit early and commit often
 
@@ -995,37 +1009,36 @@ knows from reading the message what the commit changes.
 You can select the files that you want to commit, compare against the local
 repository what changes you made and comment your changes in the commit
 message. Of course it can also be done on the command line interface First
-stage all changes you want to commit by using git add.
+stage all changes you want to commit by using `git add`.
 
 If you don't want to stage all changes in a file but only certain hunks, use
 the interactive mode
 
     $ git add -i
 
-or the patch mode
+Or the patch mode
 
-    $ git add --patch [FILES...]
+    $ git add --patch <files>
 
 Now check if everything has been added or if you missed something
 
-    git status
+    $ git status
 
 Always keep in mind that errors happen all the time. If it is later necessary
 to revert certain changes because they broke something else's code then
 reverting a small commit is easy and not much of a problem. If the change to
 be reverted is mixed up with lots of other changes the reverting of such a
 commit will be a painful night mare. If you have already committed a "monster
-commit" to your local repo then don't worry. With git it is no problem to
+commit" to your local repo then don't worry. With Git it is no problem to
 rewrite the commit history.
 
 Here are some examples of commit messages for some unrelated changes that
 should not be committed in the same commit object would be:
 
-    * Converted all line endings to CRLF in the complete code base
-    * Documented the methods of Class XY
-    * Fixed TestcaseXY so that it now passes
-    * Added a new Feature to the UI, description follows: ...
-
+* Converted all line endings to CRLF in the complete code base
+* Documented the methods of Class TSomething
+* Fixed TestcaseXY so that it now passes
+* Added a new Feature to the UI, description follows: ...
 
 ### Publishing your contribution
 
@@ -1044,7 +1057,7 @@ errors are most easily fixed in yet unpublished changes!
 
 If everything is OK, publish the commits to your public GitHub repository.
 
-    $ git push origin master
+    $ git push origin develop
 
 Now that your commit is published, it doesn't mean that it has already been
 merged into the main repository. You should issue a merge request to one of
@@ -1094,30 +1107,27 @@ may take some time. Commits that have already been applied to the main line
 and thus are possibly already distributed over many contributor's private
 repositories errors can only be fixed by making new commits that revert the
 erroneous commit's changes but not by fixing the commit object directly.
-[edit] Correcting errors in private unpublished commits
 
 In your private repository you are god. You can completely rewrite the
 history, but you shouldn't touch commits that have already been published and
 merged into the main repository. Otherwise you will suffer heavily next time
-you pull ;) or you cause others a lot of trouble when theiy want to pull from
-you.
+you pull or you cause others a lot of trouble when they want to pull from you.
 
 Exemplary errors and fixes are:
 
 * Forgot something in the last commit --> Amend
-* Commited too much, like to split up into multiple commits --> Soft Reset
+* Committed too much, like to split up into multiple commits --> Soft Reset
 * Things went so wrong that you want to throw some commits away --> Hard Reset
 
-Note: Before you play god, be careful! If you rewrite history which has
-already been pushed remote then you need to force overwriting the remote
-history or you won't be able to push again. See correcting errors in your
-public repo. If the commits you want to discard have already been propagated
-into other's repositories then you will probably cause a lot of trouble!
-
+> If you rewrite history which has already been pushed remote then you need to
+> force overwriting the remote history or you won't be able to push again. See
+> correcting errors in your public repo. If the commits you want to discard
+> have already been propagated into other's repositories then you will
+> probably cause a lot of trouble.
 
 ### Correcting errors in your public remote repository
 
-Yes, git can do that too. But beware, as you can guess, much trouble can be
+Yes, Git can do that too. But beware, as you can guess, much trouble can be
 caused by rewriting history that others have already based their work on. Only
 do this, if you are sure that no one has yet pulled the commits you want to
 change.
@@ -1126,55 +1136,123 @@ First of all, fix your local repository as described in the previous section.
 After that you can force your public repository to the new revision history.
 If the public repository is configured to allow forced pushes then simply do:
 
-    git push -f origin master
+    $ git push -f origin develop
 
 If the remote repository rejects a forced push there is still a trick, but it
 might take a little longer for big repositories (so beware):
 
-    git push origin :master
-    git push origin master
+    $ git push origin :develop
+    $ git push origin develop
 
 To understand what's happening here you should know that push allows to push
 from one branch to the other with the following notation
-`local_branch:remote_branch`. A normal git push origin master is a shortcut for
-git push origin master:master. If you leave the local branch blank it will
-delete the remote branch. The second push will then recreate it and transport
-your complete rewritten revision history to the remote repository.
-[edit] Correcting errors that are already merged upstream
+`local_branch:remote_branch`. A normal `git push origin develop` is a shortcut
+for `git push origin develop:develop`. If you leave the local branch blank it
+will delete the remote branch. The second push will then recreate it and
+transport your complete rewritten revision history to the remote repository.
+
 
 ## Normal workflow
 
+As said, all development work is done under the `develop` branch. So, you
+should check you have a `develop` local branch:
+
+    $ git branch
+
+    * master
+      develop
+
+If you don't, you can use the upstream development branch to start your own.
+First check the remote branches (if you don't have the `upstream` remote
+repository, read *Following the official Analyser repository* almost at the
+beginning of this guide):
+
+    $ git branch -r
+
+    origin/master
+    upstream/develop
+    upstream/master
+
+Do this to create your local branch (where you will work):
+
+    $ git checkout -b develop upstream/develop
+
+Also make sure you push that local branch to your public repository, so
+everyone can see it:
+
+    $ git push origin develop
+
 ### Before start
 
-Make sure you have your fork up-to-date and your working tree is clear.
-Suppose this is your local repo
+Make sure you have your fork up-to-date and your working tree is clear. You
+already have read about how to get the last changes from the upstream
+repository. Suppose this is your local repo
 
-        o---o---o                     master
+        o---o---o                    master - origin/master - upstream/develop
                  \
-                  o---o---o---o       develop
-                           \
-                            o---o     topic
+                  o---o              upstream/develop
+                       \
+                        o---o        develop - origin/develop
+                         \
+                          o---o      topic
+
+This means you have not done anything since the last time you pushed to your
+GitHub (public) repository, so your local branches and your branches from
+`origin` point to the same commits. Also it means you don't know if the
+integrator manager have accepted your changes, because the `upstream` branches
+are behind your local branches (this also means you have not updated from
+`upstream` since you started the work that you already published).
 
 You can use this command to get the commits from the upstream repo that you
 don't have yet
 
     $ git fetch upstream
+
+And when it finish, you have all the last commits of the `usm-data-analysis`'s
+repo, and the remote branches  `upstream/master` and `upstream/develop` point
+to them (in this example `upstream/develop` has your commits, so the
+integration-manager accepted them, and also it has two new commits from
+someone else):
+
+        o---o---o                        master - upstream/master  #nothing new
+                 \
+                  \               o---o  upstream/develop
+                   \             /
+                    o---o---o---o        develop
+                             \
+                              o---o      topic
+
+To see the new changes and the differences with the local branches, read below
+*Keeping your clone up-to-date*. Now you can integrate the others' changes
+into your local `develop` branch. But first, you must be sure you are in the
+`develop` branch (remember, all the work is done under this branch, or in some
+*topic/feature* branch that you will merge to this one later):
+
+    $ git branch
+
+If you are not, then switch to it:
+
     $ git checkout develop
+
+Now do a fast-forward merge (this mean your branch is contained by
+`origin/develop`, so the `develop` pointer advances to the commit on the tip):
+
     $ git merge upstream/develop
 
-This should be a fast-forward merge, because if you have not updated, other
-developers could send their work in the meantime and `upstream/develop` is
-ahead of your `origin/develop` branch.
+The result is this:
 
-        o---o---o                                 master
+        o---o---o                                 master - upstream/master
                  \
-                  o---o---o---o---o---o---o       develop
-                           \
-                            o---o                 topic
+                  \                   o---o       develop - upstream/develop
+                   \                 /
+                    o---o---o---o---o             origin/develop
+                             \
+                              o---o               topic
 
-If you have commits in your `develop` branch that you have not pushed yet, of
-that the maintainer has no integrated yet, probably you will obtain a merge
-commit and you will have to resolve any conflict that may appear.
+If you have commits in your `develop` branch that you have not pushed yet, or
+commits that you published but the maintainer has no integrated yet, probably
+you will obtain a merge commit and you will have to resolve any conflict that
+may appear.
 
         o---o---o                       master
                  \
@@ -1185,23 +1263,49 @@ commit and you will have to resolve any conflict that may appear.
                               o---o     topic
 
 Now that you have the last changes from the [Analyser][analysis-repo] repo,
-you can start working.
+you can start working in a new feature, or continue the work you already
+started in your `topic` branch.
 
 ### Working in a new feature
 
-If you will start to work in some new feature, it is recommended that you use
-a topic branch, and do all your work in there:
+Remember, developers work in their `develop` local branch. If you will start
+working in some new feature, it is recommended that you use a topic branch
+(instead of committing on your `develop` branch), and do all your work in
+there. Then, when you consider that it is done, you can put it back into your
+`develop` branch. So, to start a new topic branch:
 
     $ git checkout -b feature develop
 
-You can commit as recommended until you finish the feature. In the
-meantime you can update your `develop` branch with changes in the upstream
-repository:
+You can commit as you has been recommended (to do this you **must** read
+*Daily workflow* and *Collaborating with Git* above, and follow every
+indication) until you finish the feature. The principal guidelines are:
+
+* Make sure your code follow the [coding conventions][coding].
+* Check that your changes don't have trailing whitespace (`git diff --check`).
+* Try to make each commit a logically separate changeset.
+* Follow the rules to write the commit message (use present tense, first a
+  short summary of 50 chars or less, and after a blank line the more detailed
+  description if necessary, 72 columns width)
+* Double check if everything is fine. It is easier to fix errors in
+  unpublished changes.
+
+> **If you send a pull request with commits or changes that are not according
+> to this conventions, your request will be ignored by the integrator-manager
+> until you fix the problems.**
+>
+> **Put your attention on the commit message and the trailing whitespace
+> principally, because fixing that involves to change your published
+> history. A commit with bad changes can be reverted in the future, but to do
+> that it is important that every commit represents a logically related set
+> of changes, and small changes if it is posible.**
+
+In the meantime you can update your `develop` branch with changes in the
+upstream repository, so probably you will get something like this after a few
+commits in your `feature` branch:
 
        o---o---o---o---o---o           develop
                     \
                      o---o---o---o     feature
-
 
 To see the differences between your work and the current state of the
 `develop` branch:
@@ -1224,7 +1328,7 @@ To see all the commits in the `feature` branch since it was created
 To see all the new commits in the `develop` branch since you created the
 `feature` branch:
 
-    # git log feature..develop
+    $ git log feature..develop
 
 ### Rewriting history
 
@@ -1245,9 +1349,8 @@ If everything is OK, you will obtain the following:
                      o---o---o---o     feature
 
 But also you can get conflicts that you will have to resolve before complete
-the merge.
-
-You will not use anymore the `feature` branch, so it can be deleted:
+the merge (read below *Solving conflicts*). When everything is OK, you will
+not use anymore the `feature` branch, so it can be deleted:
 
     $ git branch -d feature
 
@@ -1273,7 +1376,7 @@ Anytime you can get all the new commits from the main line:
 
     $ git fetch upstream
 
-You can checkout the state of the upstream repo by doing
+You can checkout the state of the upstream `develop` branch by doing
 
     $ git checkout upstream/develop
 
@@ -1307,7 +1410,7 @@ like this:
 
 ### Solving conflicts
 
-When a merge isn't resolved automatically, git leaves the index and the
+When a merge isn't resolved automatically, Git leaves the index and the
 working tree in a special state that gives you all the information you need to
 help resolve the merge.
 
@@ -1408,6 +1511,7 @@ If you need more extensive help, you can see
 
 [analysis-repo]: http://github.com/usm-data-analysis/Analyser "Analyser"
 [usm-user]: http://github.com/usm-data-analysis "usm-data-analysis"
-[coding]: http://github.com/usm-data-analysis/Analyser/blob/master/doc/coding_conventions.md "Coding Conventions"
+[coding]: http://github.com/usm-data-analysis/Analyser/blob/develop/doc/coding_conventions.md "Coding Conventions"
 [wiki]: http://wiki.github.com/usm-data-analysis/Analyser "Analyser wiki"
 [issues]: http://github.com/usm-data-analysis/Analyser/issues "Analyser issues"
+[list]: http://groups.google.com/group/usm-fis-data-analysis "Mailing List"
