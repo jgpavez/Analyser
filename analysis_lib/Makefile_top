@@ -31,6 +31,7 @@ LIBS      = -L$(CLASTOOL)/slib/Linux -lClasTool
 
 vpath %.cxx $(SRC_DIR)
 vpath %.h $(INC_DIR)
+vpath %.icc $(INC_DIR)
 
 
 SH_LIB     := libTIdentificator.so
