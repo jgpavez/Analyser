@@ -390,15 +390,11 @@ TString TIdentificator::GetCategorization(Int_t k)
             partId = "electron";
 
 
-        
         if (k > 0) {
+            if (Charge(k)==0 && Betta(k)>0.95 && ECStatus(k)>0)
+                partId = "photon";
 
-            if (Charge(k)==0 && 
-			Betta(k)>0.95 && 
-			ECStatus(k)>0) 
-			partId = "photon";
-
-	//positive particles	
+            //positive particles
             if (Charge(k) == 1 &&
                         Status(k) > 0 && Status(k) < 100 &&
                         StatDC(k) > 0 && DCStatus(k) > 0) {
