@@ -93,7 +93,8 @@ public:
     Double_t SCStatus(Int_t);
 
     // Derived observables
-    Double_t Moment(Int_t, Bool_t = 0);
+    Double_t Momentum(Int_t, Bool_t = 0);
+    Double_t Moment(Int_t, Bool_t = 0);  // Deprecated
     Double_t Mass2(Int_t);
     Double_t ThetaLab(Int_t, Bool_t = 0);
     Double_t PhiLab(Int_t, Bool_t = 0);
