@@ -74,61 +74,6 @@ TIdentificator::~TIdentificator()
 
 
 
-Double_t TIdentificator::Id(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Id;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Id;
-    }
-}
-
-
-
-Double_t TIdentificator::Px(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Px;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Px;
-    }
-}
-
-
-
-Double_t TIdentificator::Py(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Py;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Py;
-    }
-}
-
-
-
-Double_t TIdentificator::Pz(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Pz;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Pz;
-    }
-}
-
-
-
-
-
-
 Double_t TIdentificator::Moment(Int_t k, Bool_t kind)
 {
     if (kind == 0) {
