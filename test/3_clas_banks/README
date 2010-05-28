@@ -1,7 +1,7 @@
 This source code it is used to work with the clas_42011_01_1.pass2.root file.
 
 
-The 'main.C' macro reads the ROOT file and creates the Betta versus Moment
+The 'main.C' macro reads the ROOT file and creates the Betta versus Momentum
 histograms (TH2F and TProfile) for every particle, and saves them in two
 files, 'particle_histograms.root' and 'particle_profiles.root'. The TProfile
 objects are used to fit the betta function. An executable version of the macro
@@ -19,7 +19,7 @@ macro it is created by the Makefile. Then you can use the 'getFit.C' macro to
 show the fitting of the particle given as parameter to the macro.
 
 
-The 'mass_distribution.C' macro creates the Mass versus Moment histograms
+The 'mass_distribution.C' macro creates the Mass versus Momentum histograms
 (TH2F and TProfile) for every particle with positive charge and StatSC > 1.
 The histograms are saved in the 'particle_mass_dist.root' file. You can use
 the macro 'show_mass_dist.C' to show them.

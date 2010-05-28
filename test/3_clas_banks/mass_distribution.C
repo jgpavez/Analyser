@@ -18,8 +18,8 @@ void mass_distribution ()
         int nRows = input->GetNRows("EVNT");
         for (int i = 0; i < nRows; i++)
             if (t->Charge(i) == 1 && t->StatSC(i) > 0) {
-                h->Fill(t->Mass2(i), t->Moment(i));
-                p->Fill(t->Mass2(i), t->Moment(i));
+                h->Fill(t->Mass2(i), t->Momentum(i));
+                p->Fill(t->Mass2(i), t->Momentum(i));
             }
         input->Next();
     };
