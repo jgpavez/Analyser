@@ -1,5 +1,6 @@
 void main ()
 {
+    gSystem->Load("libTree.so");
     gSystem->Load("libClasBanks.so");
     gSystem->Load("libClasTool.so");
     gSystem->Load("libTIdentificator.so");
@@ -13,7 +14,7 @@ void main ()
 
     Int_t nEntries = input->GetEntries();
     input->Next();
-
+    cout<<massPi_zero<<endl;
     TH2F *h1 = new TH2F("electron_2d", "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
     TH2F *h2 = new TH2F("he_pion_2d", "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
     TH2F *h3 = new TH2F("le_pion_2d", "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);

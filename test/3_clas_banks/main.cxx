@@ -8,14 +8,14 @@
 #include "TCanvas.h"
 #include "TIdentificator.h"
 #include "TClasTool.h"
-
+#include "massConst.h"
 
 int main(int argc, char **argv)
 {
     gROOT->Reset();
 
     TClasTool *input = new TClasTool();
-
+    cout<<massPi_zero<<endl;
     input->InitDSTReader("ROOTDSTR");
 
     input->AddFile("clas_42011_01_1.pass2.root");

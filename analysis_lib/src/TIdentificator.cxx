@@ -3,6 +3,7 @@
 #include <iostream>
 #include <math.h>
 #include "TIdentificator.h"
+#include "massConst.h"
 
 using namespace std;
 
@@ -40,20 +41,6 @@ const Double_t kFidPar1High1[6] = {2        ,0.966175     ,2          ,0.192701 
 const Double_t kFidPar1High2[6] = {-2       ,-2           ,-1.70021   ,-1.27578  ,-0.233492 ,-2};
 const Double_t kFidPar1High3[6] = {0.5      ,0.527823     ,0.68655    ,1.6       ,1.6       ,0.70261};
 
-//mass constants en MeV/c^2
-const Double_t massPi_plus = 139.57018;
-const Double_t massPi_min = 139.57018;
-const Double_t massPi_zero = 134.9766;
-const Double_t massKaon_plus = 493.667;
-const Double_t massKaon_min = 493.667;
-const Double_t massKaon_zero = 497.648;
-const Double_t massMeu = 105.65836;
-const Double_t massAntiMeu = 105.65836;
-const Double_t massGamma = 0;
-const Double_t massProton = 938.272013;
-const Double_t massAntiProton = 938;
-const Double_t massNeutron = 939.565560;
-const Double_t massDeuterium = 0; 
 
 //ClassImp(TIdentificator);
 	
@@ -70,76 +57,6 @@ TIdentificator::TIdentificator(TClasTool *CT)
 TIdentificator::~TIdentificator()
 {
     fCT = 0;
-}
-
-
-
-Double_t TIdentificator::Id(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Id;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Id;
-    }
-}
-
-
-
-Double_t TIdentificator::Px(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Px;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Px;
-    }
-}
-
-
-
-Double_t TIdentificator::Py(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Py;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Py;
-    }
-}
-
-
-
-Double_t TIdentificator::Pz(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Pz;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Pz;
-    }
-}
-
-
-
-
-
-
-Double_t TIdentificator::Moment(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return sqrt(fEVNT->Px * fEVNT->Px + fEVNT->Py * fEVNT->Py +
-                    fEVNT->Pz * fEVNT->Pz);
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return sqrt(fGSIM->Px * fGSIM->Px + fGSIM->Py * fGSIM->Py +
-                    fGSIM->Pz * fGSIM->Pz);
-    }
 }
 
 
@@ -273,7 +190,7 @@ Double_t TIdentificator::CosThetaPQ(Int_t k, Bool_t kind)
 
 
 
-Double_t TIdentificator::PTrans2PQ(Int_t k, Bool_t kind)
+Double_t TIdentificator::PTrans2PQ(Int_t k, Bool_t kind)//proyeccion -> //cambiar TVector3
 {
     if (kind == 0)
         return Moment(k) * Moment(k) *
@@ -310,7 +227,7 @@ Double_t TIdentificator::Sector(Int_t k, Bool_t kind) // Check if it is correct 
 
 
 
-Double_t TIdentificator::Q2(Bool_t kind)
+Double_t TIdentificator::Q2(Bool_t kind) //agregar excepcion si se le da kind=0:
 {
     if (kind == 0) {
         return 4. * kEbeam * Moment(0) *
@@ -362,6 +279,88 @@ Double_t TIdentificator::TimeCorr4(Double_t mass, Int_t k)
                 (PathSC(k) / 30.) * sqrt(pow(mass/Moment(k),2) + 1);
 }
 
+<<<<<<< Updated upstream
+=======
+
+
+TString TIdentificator::GetCategorization(Int_t k)
+{
+    Int_t number_dc = fCT->GetNRows("DCPB");
+    Int_t number_cc = fCT->GetNRows("CCPB");
+    Int_t number_sc = fCT->GetNRows("SCPB");
+    Int_t number_ec = fCT->GetNRows("ECPB");
+
+    TString partId;
+
+    partId = "not recognized";
+
+    if (number_dc != 0) {
+        if (k == 0 &&
+                    Status(0) > 0 && Status(0) < 100 &&
+                    Charge(0) == -1 &&
+                    number_cc != 0 && number_ec != 0 && number_sc != 0 &&
+                    StatCC(0) > 0 && StatSC(0) > 0 &&
+                    StatDC(0) > 0 && StatEC(0) > 0 &&
+                    DCStatus(0) > 0 && SCStatus(0) == 33 &&
+                    Nphe(0) > 25 &&
+                    Etot(0) / 0.27 + 0.4 > Moment(0) &&
+                    Etot(0) / 0.27 - 0.4 < Moment(0) &&
+                    Ein(0) + Eout(0) > 0.8 * 0.27 * Moment(0) &&
+                    Ein(0) + Eout(0) < 1.2 * 0.27 * Moment(0) &&
+                    FidCheckCut() == 1)
+            partId = "electron";
+
+        //positive particles
+        if (k > 0) {
+            if (Charge(k) == 1 &&
+                        Status(k) > 0 && Status(k) < 100 &&
+                        StatDC(k) > 0 && DCStatus(k) > 0) {
+                if (Moment(k)>=2.7) {
+                    if (number_cc != 0 && StatCC(k) > 0 &&
+                                Nphe(k) > 25 && Chi2CC(k) < 5 / 57.3)
+                        partId = "high energy pion +";
+                }
+
+                if (Moment(k) < 2.7) {
+                    if (number_sc != 0 && StatSC(k) > 0 &&
+                                ((Moment(k) < 1 &&
+                                    TimeCorr4(0.139,k) >= -1.46 &&
+                                    TimeCorr4(0.139,k) <= 0.15) ||
+                                (Moment(k) >=1 &&
+                                    TimeCorr4(0.139,k) >= -1.38 &&
+                                    TimeCorr4(0.139,k) <= 0.53)))
+                        partId = "low energy pion +";
+                }
+
+                if (Moment(k) < 2.) {
+                    if (number_sc != 0 && StatSC(k) > 0 &&
+                                ((Moment(k) >= 1. &&
+                                    TimeCorr4(0.938,k) >= -0.69 &&
+                                    TimeCorr4(0.938,k) <= 1.38) ||
+                                (Moment(k) < 1. &&
+                                    TimeCorr4(0.938,k) >= -3.78 &&
+                                    TimeCorr4(0.938,k) <= 6.75)))
+                        partId = "low energy proton";
+                }
+
+                if (Charge(k) == 1 && number_cc != 0 &&
+                            number_ec != 0 && number_sc != 0 &&
+                            StatCC(k) > 0 && StatSC(k) > 0 &&
+                            StatDC(k) > 0 && StatEC(k) > 0 &&
+                            DCStatus(k) > 0 && Nphe(k) > 25 &&
+                            Etot(k) / 0.27 + 0.4 > Moment(k) &&
+                            Etot(k) / 0.27 - 0.4 < Moment(k) &&
+                            Ein(k) + Eout(k) > 0.8 * 0.27 * Moment(k) &&
+                            Ein(k) + Eout(k) < 1.2 * 0.27 * Moment(k))
+                    partId = "positron";
+            }
+        }
+    }
+
+    return partId;
+}
+
+>>>>>>> Stashed changes
 
 
 Double_t TIdentificator::FidTheta(Int_t k, Bool_t kind)

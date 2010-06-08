@@ -110,7 +110,7 @@ public:
     Double_t Q2(Bool_t = 0);
     Double_t W(Bool_t = 0);
     Double_t Nu(Bool_t = 0);
-    Double_t ZhPi(Int_t, Bool_t = 0, Double_t = 0.139);
+    Double_t ZhPi(Int_t, Bool_t = 0, Double_t=0.139);
 
     // Correction functions
     Double_t TimeCorr4(Double_t, Int_t);
