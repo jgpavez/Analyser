@@ -99,22 +99,6 @@ inline Double_t TIdentificator::Pz(Int_t k, Bool_t kind)
 
 
 
-inline Double_t TIdentificator::Moment(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k); //cambiar de Event->Px a Px
-        return sqrt(fEVNT->Px * fEVNT->Px + fEVNT->Py * fEVNT->Py +
-                    fEVNT->Pz * fEVNT->Pz);
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return sqrt(fGSIM->Px * fGSIM->Px + fGSIM->Py * fGSIM->Py +
-                    fGSIM->Pz * fGSIM->Pz); 
-    }       
-
-}
-
-
-
 inline Int_t TIdentificator::StatCC(Int_t k)
 {
     fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);

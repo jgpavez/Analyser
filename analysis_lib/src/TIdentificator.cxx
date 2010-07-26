@@ -75,7 +75,7 @@ Double_t TIdentificator::Moment(Int_t k, Bool_t kind)
 
 Double_t TIdentificator::Mass2(Int_t k)
 {
-      return Moment(k) * Moment(k) * (pow(Betta(k), -2) - 1);
+      return pow(Moment(k), 2)* (pow(Betta(k), -2) - 1);
 }
 
 
@@ -147,6 +147,9 @@ Double_t TIdentificator::PhiVirtLab(Bool_t kind) // Check if it is correct !!!
 
 Double_t TIdentificator::ThetaPQ(Int_t k, Bool_t kind)
 {
+    if (k == 0){
+        cout <<"message HERE"<<endl;
+    }
     if (kind == 0) {
         return acos(Pz(k) / Moment(k));
     } else {                            // Fix this in case kind != 1
@@ -159,14 +162,16 @@ Double_t TIdentificator::ThetaPQ(Int_t k, Bool_t kind)
 Double_t TIdentificator::PhiPQ(Int_t k, Bool_t kind)
 {
     Double_t phi_pq;
-
+    if (k == 0){
+        cout <<"message HERE"<<endl;
+    }
     if (kind == 0) {
         TVector3 vpi(Px(k), Py(k), Pz(k));
         TVector3 vvirt(-Px(0), -Py(0), kEbeam - Pz(0));
         Double_t phi_z = TMath::Pi() - vvirt.Phi();
         vvirt.RotateZ(phi_z);
         vpi.RotateZ(phi_z);
-        TVector3 vhelp(0., 0., 1.);
+            TVector3 vhelp(0., 0., 1.);
         Double_t phi_y = vvirt.Angle(vhelp);
         vvirt.RotateY(phi_y);
         vpi.RotateY(phi_y);
@@ -191,6 +196,9 @@ Double_t TIdentificator::PhiPQ(Int_t k, Bool_t kind)
 
 Double_t TIdentificator::CosThetaPQ(Int_t k, Bool_t kind)
 {
+    if (k == 0){
+        cout <<"message HERE"<<endl;
+    }
     if (kind == 0)
         return (Pz(k) * (kEbeam - Pz(0)) - Px(k) * Px(0) - Py(k) * Py(0)) /
                             (sqrt(Nu() * Nu() + Q2()) * Moment(k));
@@ -203,23 +211,24 @@ Double_t TIdentificator::CosThetaPQ(Int_t k, Bool_t kind)
 
 
 Double_t TIdentificator::PTrans2PQ(Int_t k, Bool_t kind)//proyeccion -> //cambiar TVector3
-{
+{   
+    if (k == 0){
+        cout <<"message HERE"<<endl;
+    }
     if (kind == 0)
-        return Moment(k) * Moment(k) *
-                            (1 - CosThetaPQ(k) * CosThetaPQ(k));
+        return pow(Moment(k), 2) * (1 - pow(CosThetaPQ(k), 2));
     else                                // Fix this in case kind != 1
-        return Moment(k,1) * Moment(k,1) *
-                            (1 - CosThetaPQ(k,1) * CosThetaPQ(k,1));
+        return pow(Moment(k,1), 2) * (1 - pow(CosThetaPQ(k,1),2));
 }
-
+    
 
 
 Double_t TIdentificator::PLong2PQ(Int_t k, Bool_t kind)
 {
     if (kind == 0)
-        return Moment(k) * Moment(k) * CosThetaPQ(k) * CosThetaPQ(k);
+        return pow(Moment(k), 2) * pow(CosThetaPQ(k), 2);
     else                                // Fix this in case kind != 1
-        return Moment(k,1) * Moment(k,1) * CosThetaPQ(k,1) * CosThetaPQ(k,1);
+        return pow(Moment(k,1), 2) * pow(CosThetaPQ(k,1), 2);
 }
 
 
@@ -242,11 +251,10 @@ Double_t TIdentificator::Sector(Int_t k, Bool_t kind) // Check if it is correct 
 Double_t TIdentificator::Q2(Bool_t kind) //agregar excepcion si se le da kind=0:
 {
     if (kind == 0) {
-        return 4. * kEbeam * Moment(0) *
-                            sin(ThetaPQ(0)/2) * sin(ThetaPQ(0)/2);
+        return 4. * kEbeam * Moment(0) * pow(sin(ThetaPQ(0)/2),2);
+                            
     } else {                            // Fix this in case kind != 1
-        return 4. * kEbeam * Moment(0,1) *
-                            sin(ThetaPQ(0,1)/2) * sin(ThetaPQ(0,1)/2);
+        return 4. * kEbeam * Moment(0,1) * pow(sin(ThetaPQ(0,1)/2),2);
     }
 }
 
@@ -278,15 +286,19 @@ Double_t TIdentificator::Nu(Bool_t kind)
 Double_t TIdentificator::ZhPi(Int_t k, Bool_t kind, Double_t Mass)
 {
     if (kind == 0)
-        return sqrt(Mass * Mass + Moment(k) * Moment(k)) / Nu(fCT);
+        return sqrt(pow(Mass,2) + pow(Moment(k),2)) / Nu(fCT);
     else                                // Fix this in case kind != 1
-        return sqrt(Mass * Mass + Moment(k,1) * Moment(k,1)) / Nu(1);
+        return sqrt(pow(Mass,2) + pow(Moment(k,1),2)) / Nu(1);
 }
 
 
 
 Double_t TIdentificator::TimeCorr4(Double_t mass, Int_t k)
 {
+    if (k == 0){ 
+        cout <<"message HERE"<<endl;
+        
+    }
     return (PathSC(0)/30.) - TimeSC(0) + TimeSC(k) - 0.08 -
                 (PathSC(k) / 30.) * sqrt(pow(mass/Moment(k),2) + 1);
 }
@@ -444,7 +456,55 @@ Int_t TIdentificator::FidSector(Int_t k, Bool_t kind)
         }
     }
 }
+//--------------- Added functions from old analyser----------------
 
+
+Int_t TIdentificator::ElecVertTarg(Int_t k, Bool_t kind){
+  Int_t p_vertex_cut_elec=0;
+  Double_t ele_liq_lim[6][2];
+  Double_t ele_sol_low[6];
+  ele_liq_lim[0][0]=-32.5;
+  ele_liq_lim[0][1]=-28;
+  ele_liq_lim[1][0]=-32.5;
+  ele_liq_lim[1][1]=-27.5;
+  ele_liq_lim[2][0]=-32;
+  ele_liq_lim[2][1]=-27.25;
+  ele_liq_lim[3][0]=-32;
+  ele_liq_lim[3][1]=-27.75;
+  ele_liq_lim[4][0]=-32.5;
+  ele_liq_lim[4][1]=-28.35;
+  ele_liq_lim[5][0]=-33.5;
+  ele_liq_lim[5][1]=-28.75;
+  Double_t ele_sol_high=-20;
+  ele_sol_low[0]=-26.5;
+  ele_sol_low[1]=-26.;
+  ele_sol_low[2]=-25.65;
+  ele_sol_low[3]=-25.85;
+  ele_sol_low[4]=-26.65;
+  ele_sol_low[5]=-27.15;
+  Int_t n_sector=Sector(0);
+
+  if(Z(0)>=ele_liq_lim[n_sector][0] && Z(0)<=ele_liq_lim[n_sector][1]) p_vertex_cut_elec=1;
+  if(Z(0)>=ele_sol_low[n_sector] && Z(0)<=ele_sol_high) p_vertex_cut_elec=2;
+
+  return p_vertex_cut_elec;
+}
+Bool_t TIdentificator::PionVertTarg(Int_t k, Bool_t kind) {
+  Bool_t vertex_cut_pion=0;
+  Double_t pion_liq_low,pion_liq_high;
+  Int_t n_ele_sector=Sector(0);
+  Int_t n_pion_sector=Sector(k);
+  if(n_pion_sector==5 || (n_ele_sector==3 && n_pion_sector==4) || (n_pion_sector==0 && n_ele_sector!=1 && n_ele_sector!=4)) pion_liq_low=-36.;
+  else pion_liq_low=-35.;
+  if(n_ele_sector==3 && n_pion_sector==2) pion_liq_high=-24.;
+  else if((n_ele_sector==5 && n_pion_sector!=2 && n_pion_sector!=3)|| (n_pion_sector==5 && n_ele_sector!=2)|| (n_ele_sector==0 && n_pion_sector==0)|| (n_ele_sector==1 && n_pion_sector==1)|| (n_pion_sector==4 && (n_ele_sector==3 || n_ele_sector==4))) pion_liq_high=-26.;
+  else pion_liq_high=-25.;
+
+  if(ElecVertTarg(k)==1 && Z(k)>=pion_liq_low && Z(k)<=pion_liq_high) vertex_cut_pion=1;
+  if(ElecVertTarg(k)==2 && Z(k)>=-30 && Z(k)<=-18) vertex_cut_pion=1;
+
+  return vertex_cut_pion;
+}
 
 
 #include <../src/Categorize.C>
