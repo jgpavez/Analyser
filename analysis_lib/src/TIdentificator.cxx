@@ -283,7 +283,7 @@ Double_t TIdentificator::Nu(Bool_t kind)
 
 
 
-Double_t TIdentificator::ZhPi(Int_t k, Bool_t kind, Double_t Mass)
+Double_t TIdentificator::Nu(Int_t k, Bool_t kind, Double_t Mass)// name switched
 {
     if (kind == 0)
         return sqrt(pow(Mass,2) + pow(Moment(k),2)) / Nu(fCT);
