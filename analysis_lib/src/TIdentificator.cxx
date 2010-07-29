@@ -148,7 +148,7 @@ Double_t TIdentificator::PhiVirtLab(Bool_t kind) // Check if it is correct !!!
 Double_t TIdentificator::ThetaPQ(Int_t k, Bool_t kind)
 {
     if (k == 0){
-        cout <<"message HERE"<<endl;
+        cout <<"Warning: Not a valid value (case 0)"<<endl;
     }
     if (kind == 0) {
         return acos(Pz(k) / Moment(k));
@@ -163,7 +163,7 @@ Double_t TIdentificator::PhiPQ(Int_t k, Bool_t kind)
 {
     Double_t phi_pq;
     if (k == 0){
-        cout <<"message HERE"<<endl;
+        cout <<"Warning: Not a valid value (case 0)"<<endl;
     }
     if (kind == 0) {
         TVector3 vpi(Px(k), Py(k), Pz(k));
@@ -197,7 +197,7 @@ Double_t TIdentificator::PhiPQ(Int_t k, Bool_t kind)
 Double_t TIdentificator::CosThetaPQ(Int_t k, Bool_t kind)
 {
     if (k == 0){
-        cout <<"message HERE"<<endl;
+        cout <<"Warning: Not a valid value (case 0)"<<endl;
     }
     if (kind == 0)
         return (Pz(k) * (kEbeam - Pz(0)) - Px(k) * Px(0) - Py(k) * Py(0)) /
@@ -213,7 +213,7 @@ Double_t TIdentificator::CosThetaPQ(Int_t k, Bool_t kind)
 Double_t TIdentificator::PTrans2PQ(Int_t k, Bool_t kind)//proyeccion -> //cambiar TVector3
 {   
     if (k == 0){
-        cout <<"message HERE"<<endl;
+        cout <<"Warning: Not a valid value (case 0)"<<endl;
     }
     if (kind == 0)
         return pow(Moment(k), 2) * (1 - pow(CosThetaPQ(k), 2));
@@ -283,10 +283,10 @@ Double_t TIdentificator::Nu(Bool_t kind)
 
 
 
-Double_t TIdentificator::Nu(Int_t k, Bool_t kind, Double_t Mass)// name switched
+Double_t TIdentificator::ZhPi(Int_t k, Bool_t kind, Double_t Mass)// name needs to be switched
 {
     if (kind == 0)
-        return sqrt(pow(Mass,2) + pow(Moment(k),2)) / Nu(fCT);
+        return sqrt(pow(Mass,2) + pow(Moment(k),2)) / Nu(k);
     else                                // Fix this in case kind != 1
         return sqrt(pow(Mass,2) + pow(Moment(k,1),2)) / Nu(1);
 }
@@ -296,7 +296,7 @@ Double_t TIdentificator::Nu(Int_t k, Bool_t kind, Double_t Mass)// name switched
 Double_t TIdentificator::TimeCorr4(Double_t mass, Int_t k)
 {
     if (k == 0){ 
-        cout <<"message HERE"<<endl;
+        cout <<"Warning: Not a valid value (case 0)"<<endl;
         
     }
     return (PathSC(0)/30.) - TimeSC(0) + TimeSC(k) - 0.08 -
