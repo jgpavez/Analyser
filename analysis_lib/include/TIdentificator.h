@@ -105,7 +105,7 @@ public:
     Double_t CosThetaPQ(Int_t, Bool_t = 0);
     Double_t PTrans2PQ(Int_t, Bool_t = 0);
     Double_t PLong2PQ(Int_t, Bool_t = 0);
-    Double_t Sector(Int_t, Bool_t = 0); // Check if it is correct !!! Add k==1
+    Int_t Sector(Int_t, Bool_t = 0); // Check if it is correct !!! Add k==1
 
     // Kinematic variables
     Double_t Q2(Bool_t = 0);

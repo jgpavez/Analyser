@@ -251,7 +251,7 @@ Double_t TIdentificator::PLong2PQ(Int_t k, Bool_t kind)
 
 
 
-Double_t TIdentificator::Sector(Int_t k, Bool_t kind) // Check if it is correct !!! Add k==1
+Int_t TIdentificator::Sector(Int_t k, Bool_t kind) // Check if it is correct !!! Add k==1
 {
     const Double_t r2d = 57.2957795;
 
