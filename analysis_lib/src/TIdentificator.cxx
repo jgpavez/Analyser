@@ -53,10 +53,9 @@ const Double_t massGamma = 0;
 const Double_t massProton = 938.272013;
 const Double_t massAntiProton = 938;
 const Double_t massNeutron = 939.565560;
-const Double_t massDeuterium = 0; 
+const Double_t massDeuterium = 0;
 
 //ClassImp(TIdentificator);
-	
 
 
 TIdentificator::TIdentificator(TClasTool *CT)
@@ -379,7 +378,7 @@ Double_t TIdentificator::FidFunc(Int_t side, Int_t param)
                                 kFidPar1High3[sector]),2));
 
     return fid_func_val;
-}												
+}
 
 
 
