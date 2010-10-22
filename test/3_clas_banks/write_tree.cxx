@@ -49,7 +49,7 @@ int main(int argc, char **argv)
                 id = 5;
             else
                 id = 0;
-            moment = t->Moment(i);
+            moment = t->Momentum(i);
             betta = t->Betta(i);
             tree->Fill();
         }

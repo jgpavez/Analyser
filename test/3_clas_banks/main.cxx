@@ -41,20 +41,20 @@ int main(int argc, char **argv)
         for (int i = 0; i < nRows; i++) {
             TString category = t->GetCategorization(i);
             if (category == "electron") {
-                h1->Fill(t->Moment(i), t->Betta(i));
-                p1->Fill(t->Moment(i), t->Betta(i));
+                h1->Fill(t->Momentum(i), t->Betta(i));
+                p1->Fill(t->Momentum(i), t->Betta(i));
             } else if (category == "high energy pion +") {
-                h2->Fill(t->Moment(i), t->Betta(i));
-                p2->Fill(t->Moment(i), t->Betta(i));
+                h2->Fill(t->Momentum(i), t->Betta(i));
+                p2->Fill(t->Momentum(i), t->Betta(i));
             } else if (category == "low energy pion +") {
-                h3->Fill(t->Moment(i), t->Betta(i));
-                p3->Fill(t->Moment(i), t->Betta(i));
+                h3->Fill(t->Momentum(i), t->Betta(i));
+                p3->Fill(t->Momentum(i), t->Betta(i));
             } else if (category == "low energy proton") {
-                h4->Fill(t->Moment(i), t->Betta(i));
-                p4->Fill(t->Moment(i), t->Betta(i));
+                h4->Fill(t->Momentum(i), t->Betta(i));
+                p4->Fill(t->Momentum(i), t->Betta(i));
             } else if (category == "positron") {
-                h5->Fill(t->Moment(i), t->Betta(i));
-                p5->Fill(t->Moment(i), t->Betta(i));
+                h5->Fill(t->Momentum(i), t->Betta(i));
+                p5->Fill(t->Momentum(i), t->Betta(i));
             }
         }
         input->Next();

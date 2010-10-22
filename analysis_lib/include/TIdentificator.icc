@@ -17,10 +17,62 @@ inline Double_t TIdentificator::Betta(Int_t k)
 
 
 
+inline Double_t TIdentificator::Id(Int_t k, Bool_t kind)
+{
+    if (kind == 0) {
+        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
+        return fEVNT->Id;
+    } else {                            // Fix this in case kind != 1
+        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
+        return fGSIM->Id;
+    }
+}
+
+
+
 inline Double_t TIdentificator::Charge(Int_t k)
 {
     fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
     return fEVNT->Charge;
+}
+
+
+
+inline Double_t TIdentificator::Px(Int_t k, Bool_t kind)
+{
+    if (kind == 0) {
+        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
+        return fEVNT->Px;
+    } else {                            // Fix this in case kind != 1
+        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
+        return fGSIM->Px;
+    }
+}
+
+
+
+inline Double_t TIdentificator::Py(Int_t k, Bool_t kind)
+{
+    if (kind == 0) {
+        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
+        return fEVNT->Py;
+    } else {                            // Fix this in case kind != 1
+        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
+        return fGSIM->Py;
+    }
+}
+
+
+
+inline Double_t TIdentificator::Pz(Int_t k, Bool_t kind)
+{
+    if (kind == 0) {
+        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
+        return fEVNT->Pz;
+    } else {                            // Fix this in case kind != 1
+        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
+        return fGSIM->Pz;
+    }
 }
 
 
@@ -84,6 +136,8 @@ inline Double_t TIdentificator::Status(Int_t k)
     fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
     return fEVNT->Status;
 }
+
+
 
 inline Double_t TIdentificator::Nphe(Int_t k)
 {

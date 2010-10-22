@@ -53,10 +53,9 @@ const Double_t massGamma = 0;
 const Double_t massProton = 938.272013;
 const Double_t massAntiProton = 938;
 const Double_t massNeutron = 939.565560;
-const Double_t massDeuterium = 0; 
+const Double_t massDeuterium = 0;
 
 //ClassImp(TIdentificator);
-	
 
 
 TIdentificator::TIdentificator(TClasTool *CT)
@@ -74,61 +73,18 @@ TIdentificator::~TIdentificator()
 
 
 
-Double_t TIdentificator::Id(Int_t k, Bool_t kind)
+Double_t TIdentificator::Momentum(Int_t k, Bool_t kind)
 {
     if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Id;
+        return sqrt(Px(k) * Px(k) + Py(k) * Py(k) + Pz(k) * Pz(k));
     } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Id;
+        return sqrt(Px(k,1) * Px(k,1) + Py(k,1) * Py(k,1) + Pz(k,1) * Pz(k,1));
     }
 }
 
 
 
-Double_t TIdentificator::Px(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Px;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Px;
-    }
-}
-
-
-
-Double_t TIdentificator::Py(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Py;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Py;
-    }
-}
-
-
-
-Double_t TIdentificator::Pz(Int_t k, Bool_t kind)
-{
-    if (kind == 0) {
-        fEVNT = (TEVNTClass *) fCT->GetBankRow("EVNT", k);
-        return fEVNT->Pz;
-    } else {                            // Fix this in case kind != 1
-        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
-        return fGSIM->Pz;
-    }
-}
-
-
-
-
-
-
+// Deprecated
 Double_t TIdentificator::Moment(Int_t k, Bool_t kind)
 {
     if (kind == 0) {
@@ -146,7 +102,7 @@ Double_t TIdentificator::Moment(Int_t k, Bool_t kind)
 
 Double_t TIdentificator::Mass2(Int_t k)
 {
-      return Moment(k) * Moment(k) * (pow(Betta(k), -2) - 1);
+      return Momentum(k) * Momentum(k) * (pow(Betta(k), -2) - 1);
 }
 
 
@@ -156,9 +112,9 @@ Double_t TIdentificator::ThetaLab(Int_t k, Bool_t kind)
     Double_t theta;
 
     if (kind == 0) {
-        theta = acos(Pz(k) / Moment(k));
+        theta = acos(Pz(k) / Momentum(k));
     } else {                            // Fix this in case kind != 1
-        theta = acos(Pz(k,1) / Moment(k,1));
+        theta = acos(Pz(k,1) / Momentum(k,1));
     }
 
     return theta;
@@ -192,10 +148,10 @@ Double_t TIdentificator::ThetaVirtLab(Bool_t kind) // Check if it is correct !!!
     Double_t theta_virt;
 
     if (kind == 0) {
-        theta_virt = acos((kEbeam - Moment(0) * cos(ThetaLab(0))) /
+        theta_virt = acos((kEbeam - Momentum(0) * cos(ThetaLab(0))) /
                            (sqrt(Q2() + Nu() * Nu())));
     } else {                            // Fix this in case kind != 1
-        theta_virt = acos((kEbeam - Moment(0,1) * cos(ThetaLab(0,1))) /
+        theta_virt = acos((kEbeam - Momentum(0,1) * cos(ThetaLab(0,1))) /
                            (sqrt(Q2(1) + Nu(1) * Nu(1))));
     }
 
@@ -219,9 +175,9 @@ Double_t TIdentificator::PhiVirtLab(Bool_t kind) // Check if it is correct !!!
 Double_t TIdentificator::ThetaPQ(Int_t k, Bool_t kind)
 {
     if (kind == 0) {
-        return acos(Pz(k) / Moment(k));
+        return acos(Pz(k) / Momentum(k));
     } else {                            // Fix this in case kind != 1
-        return acos(Pz(k,1) / Moment(k,1));
+        return acos(Pz(k,1) / Momentum(k,1));
     }
 }
 
@@ -264,11 +220,11 @@ Double_t TIdentificator::CosThetaPQ(Int_t k, Bool_t kind)
 {
     if (kind == 0)
         return (Pz(k) * (kEbeam - Pz(0)) - Px(k) * Px(0) - Py(k) * Py(0)) /
-                            (sqrt(Nu() * Nu() + Q2()) * Moment(k));
+                            (sqrt(Nu() * Nu() + Q2()) * Momentum(k));
     else                                // Fix this in case kind != 1
         return (Pz(k,1) * (kEbeam - Pz(0,1)) - Px(k,1) * Px(0,1) -
                 Py(k,1) * Py(0,1)) /
-                            (sqrt(Nu(1) * Nu(1) + Q2(1)) * Moment(k,1));
+                            (sqrt(Nu(1) * Nu(1) + Q2(1)) * Momentum(k,1));
 }
 
 
@@ -276,10 +232,10 @@ Double_t TIdentificator::CosThetaPQ(Int_t k, Bool_t kind)
 Double_t TIdentificator::PTrans2PQ(Int_t k, Bool_t kind)
 {
     if (kind == 0)
-        return Moment(k) * Moment(k) *
+        return Momentum(k) * Momentum(k) *
                             (1 - CosThetaPQ(k) * CosThetaPQ(k));
     else                                // Fix this in case kind != 1
-        return Moment(k,1) * Moment(k,1) *
+        return Momentum(k,1) * Momentum(k,1) *
                             (1 - CosThetaPQ(k,1) * CosThetaPQ(k,1));
 }
 
@@ -288,14 +244,14 @@ Double_t TIdentificator::PTrans2PQ(Int_t k, Bool_t kind)
 Double_t TIdentificator::PLong2PQ(Int_t k, Bool_t kind)
 {
     if (kind == 0)
-        return Moment(k) * Moment(k) * CosThetaPQ(k) * CosThetaPQ(k);
+        return Momentum(k) * Momentum(k) * CosThetaPQ(k) * CosThetaPQ(k);
     else                                // Fix this in case kind != 1
-        return Moment(k,1) * Moment(k,1) * CosThetaPQ(k,1) * CosThetaPQ(k,1);
+        return Momentum(k,1) * Momentum(k,1) * CosThetaPQ(k,1) * CosThetaPQ(k,1);
 }
 
 
 
-Double_t TIdentificator::Sector(Int_t k, Bool_t kind) // Check if it is correct !!! Add k==1
+Int_t TIdentificator::Sector(Int_t k, Bool_t kind) // Check if it is correct !!! Add k==1
 {
     const Double_t r2d = 57.2957795;
 
@@ -313,10 +269,10 @@ Double_t TIdentificator::Sector(Int_t k, Bool_t kind) // Check if it is correct 
 Double_t TIdentificator::Q2(Bool_t kind)
 {
     if (kind == 0) {
-        return 4. * kEbeam * Moment(0) *
+        return 4. * kEbeam * Momentum(0) *
                             sin(ThetaPQ(0)/2) * sin(ThetaPQ(0)/2);
     } else {                            // Fix this in case kind != 1
-        return 4. * kEbeam * Moment(0,1) *
+        return 4. * kEbeam * Momentum(0,1) *
                             sin(ThetaPQ(0,1)/2) * sin(ThetaPQ(0,1)/2);
     }
 }
@@ -337,9 +293,9 @@ Double_t TIdentificator::W(Bool_t kind)
 Double_t TIdentificator::Nu(Bool_t kind)
 {
     if (kind == 0) {
-        return kEbeam - Moment(0);
+        return kEbeam - Momentum(0);
     } else {                            // Fix this in case kind != 1
-        return kEbeam - Moment(0,1);
+        return kEbeam - Momentum(0,1);
     }
 }
 
@@ -349,9 +305,9 @@ Double_t TIdentificator::Nu(Bool_t kind)
 Double_t TIdentificator::ZhPi(Int_t k, Bool_t kind, Double_t Mass)
 {
     if (kind == 0)
-        return sqrt(Mass * Mass + Moment(k) * Moment(k)) / Nu(fCT);
+        return sqrt(Mass * Mass + Momentum(k) * Momentum(k)) / Nu(fCT);
     else                                // Fix this in case kind != 1
-        return sqrt(Mass * Mass + Moment(k,1) * Moment(k,1)) / Nu(1);
+        return sqrt(Mass * Mass + Momentum(k,1) * Momentum(k,1)) / Nu(1);
 }
 
 
@@ -359,7 +315,7 @@ Double_t TIdentificator::ZhPi(Int_t k, Bool_t kind, Double_t Mass)
 Double_t TIdentificator::TimeCorr4(Double_t mass, Int_t k)
 {
     return (PathSC(0)/30.) - TimeSC(0) + TimeSC(k) - 0.08 -
-                (PathSC(k) / 30.) * sqrt(pow(mass/Moment(k),2) + 1);
+                (PathSC(k) / 30.) * sqrt(pow(mass/Momentum(k),2) + 1);
 }
 
 
@@ -387,10 +343,10 @@ Double_t TIdentificator::FidThetaMin()
     Int_t sector = FidSector(0);
 
     Double_t theta_min_val = kThetaPar0[sector] +
-            kThetaPar1[sector] / pow(Moment(0),2) +
-            kThetaPar2[sector] * Moment(0) +
-            kThetaPar3[sector] / Moment(0) +
-            kThetaPar4[sector] *exp(kThetaPar5[sector] * Moment(0));
+            kThetaPar1[sector] / pow(Momentum(0),2) +
+            kThetaPar2[sector] * Momentum(0) +
+            kThetaPar3[sector] / Momentum(0) +
+            kThetaPar4[sector] *exp(kThetaPar5[sector] * Momentum(0));
 
     return theta_min_val;
 }
@@ -405,24 +361,24 @@ Double_t TIdentificator::FidFunc(Int_t side, Int_t param)
     if (side == 0 && param==0)
         fid_func_val = kFidPar0Low0[sector] +
                     kFidPar0Low1[sector] * exp(kFidPar0Low2[sector] *
-                            (Moment(0) - kFidPar0Low3[sector]));
+                            (Momentum(0) - kFidPar0Low3[sector]));
     else if (side == 1 && param==0)
         fid_func_val = kFidPar0High0[sector] +
                     kFidPar0High1[sector] * exp(kFidPar0High2[sector] *
-                            (Moment(0) - kFidPar0High3[sector]));
+                            (Momentum(0) - kFidPar0High3[sector]));
     else if (side == 0 && param==1)
         fid_func_val=kFidPar1Low0[sector] +
-                    kFidPar1Low1[sector] * Moment(0) *
-                    exp(kFidPar1Low2[sector] * pow((Moment(0) -
+                    kFidPar1Low1[sector] * Momentum(0) *
+                    exp(kFidPar1Low2[sector] * pow((Momentum(0) -
                                 kFidPar1Low3[sector]),2));
     else if (side == 1 && param==1)
         fid_func_val = kFidPar1High0[sector] +
-                    kFidPar1High1[sector] * Moment(0) *
-                    exp(kFidPar1High2[sector] * pow((Moment(0) -
+                    kFidPar1High1[sector] * Momentum(0) *
+                    exp(kFidPar1High2[sector] * pow((Momentum(0) -
                                 kFidPar1High3[sector]),2));
 
     return fid_func_val;
-}												
+}
 
 
 

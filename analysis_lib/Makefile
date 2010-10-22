@@ -50,6 +50,6 @@ clean:
 	@rm -rf $(OBJ_DIR) $(DICT_DIR)
 
 distclean: clean
-	@rm -rf $(SLIB_DIR) $(DEP_DIR) tags
+	@rm -rf $(SLIB_DIR) $(DEP_DIR)
 
 -include Makefile_me

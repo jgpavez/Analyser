@@ -93,7 +93,8 @@ public:
     Double_t SCStatus(Int_t);
 
     // Derived observables
-    Double_t Moment(Int_t, Bool_t = 0);
+    Double_t Momentum(Int_t, Bool_t = 0);
+    Double_t Moment(Int_t, Bool_t = 0);  // Deprecated
     Double_t Mass2(Int_t);
     Double_t ThetaLab(Int_t, Bool_t = 0);
     Double_t PhiLab(Int_t, Bool_t = 0);
@@ -104,7 +105,7 @@ public:
     Double_t CosThetaPQ(Int_t, Bool_t = 0);
     Double_t PTrans2PQ(Int_t, Bool_t = 0);
     Double_t PLong2PQ(Int_t, Bool_t = 0);
-    Double_t Sector(Int_t, Bool_t = 0); // Check if it is correct !!! Add k==1
+    Int_t Sector(Int_t, Bool_t = 0); // Check if it is correct !!! Add k==1
 
     // Kinematic variables
     Double_t Q2(Bool_t = 0);
