@@ -118,6 +118,9 @@ public:
 
     // Particle Identification cuts
     TString GetCategorization(Int_t);
+    TString* GetCategorization();
+    void PrintCategorization();
+    void PrintCategorization(TString*);
 
     // Fiducial Cut
     Double_t FidTheta(Int_t, Bool_t = 0);
@@ -128,6 +131,9 @@ public:
     Double_t FidPhiMax();
     Bool_t FidCheckCut();
     Int_t FidSector(Int_t, Bool_t = 0);
+
+private:
+    TString* fPartIds;
 };
 
 #include "TIdentificator.icc"

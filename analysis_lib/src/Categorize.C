@@ -79,3 +79,47 @@ TString TIdentificator::GetCategorization(Int_t k)
 
     return partId;
 }
+
+
+
+TString* TIdentificator::GetCategorization()
+{
+    Int_t number = fCT->GetNRows("EVNT");
+
+    if (fPartIds != 0) delete [] fPartIds;
+    fPartIds = new TString[number];
+
+    if (number != 0) {
+        for (Int_t i = 0; i < number; i++)
+            fPartIds[i] = GetCategorization(i);
+    }
+
+    return fPartIds;
+}
+
+
+
+void TIdentificator::PrintCategorization()
+{
+    Int_t number = fCT->GetNRows("EVNT");
+    fPartIds = GetCategorization();
+
+    if (fPartIds->CompareTo("electron") == 0) {
+        for (Int_t i = 0; i < number; i++)
+            cout << *(fPartIds+i) << endl;
+        cout << endl;
+    }
+}
+
+
+
+void TIdentificator::PrintCategorization(TString* partIds)
+{
+    Int_t number = fCT->GetNRows("EVNT");
+
+    if (partIds->CompareTo("electron") == 0) {
+        for (Int_t i = 0; i < number; i++)
+            cout << *(partIds+i) << endl;
+        cout << endl;
+    }
+}

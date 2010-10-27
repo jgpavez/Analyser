@@ -62,12 +62,15 @@ TIdentificator::TIdentificator(TClasTool *CT)
     : kEbeam(5.014), kMpi(0.139570), kGOOD(-1000.)
 {
     this->fCT = CT;
+    fPartIds = 0;
 }
 
 
 
 TIdentificator::~TIdentificator()
 {
+    if (fPartIds != 0) delete [] fPartIds;
+    fPartIds = 0;
     fCT = 0;
 }
 
