@@ -35,27 +35,27 @@ public:
     Double_t X(Int_t);                          //inline
     Double_t Y(Int_t);                          //inline
     Double_t Z(Int_t);                          //inline
-    Int_t StatCC(Int_t);                        //inline - CCPB key
-    Int_t StatSC(Int_t);                        //inline - SCPB key
-    Int_t StatDC(Int_t);                        //inline - DCPB key
-    Int_t StatEC(Int_t);                        //inline - ECPB key
-    Double_t Status(Int_t);                     //inline - Event general status
+    Int_t StatCC(Int_t);                        //inline
+    Int_t StatSC(Int_t);                        //inline
+    Int_t StatDC(Int_t);                        //inline
+    Int_t StatEC(Int_t);                        //inline
+    Double_t Status(Int_t);                     //inline
 
-    // CCPB bank
+    // CCPB
     Double_t Nphe(Int_t);
     Double_t Chi2CC(Int_t);
     Double_t CCStatus(Int_t);
 
-    // DCPB bank
+    // DCPB
     Double_t DCStatus(Int_t);
 
-    // ECPB bank
+    // ECPB
     Double_t Etot(Int_t k);
     Double_t Ein(Int_t k);
     Double_t Eout(Int_t k);
     Double_t ECStatus(Int_t);
 
-    // SCPB bank
+    // SCPB
     Double_t PathSC(Int_t k);
     Double_t TimeSC(Int_t k);
     Double_t EdepSC(Int_t k);
@@ -63,18 +63,18 @@ public:
 
     // Derived observables
     Double_t Momentum(Int_t, Bool_t = 0);
-    Double_t Moment(Int_t, Bool_t = 0);  // Deprecated
+    Double_t Moment(Int_t, Bool_t = 0);         // Deprecated
     Double_t Mass2(Int_t);
     Double_t ThetaLab(Int_t, Bool_t = 0);
     Double_t PhiLab(Int_t, Bool_t = 0);
-    Double_t ThetaVirtLab(Bool_t = 0); // Check if it is correct !!!
-    Double_t PhiVirtLab(Bool_t = 0); // Check if it is correct !!!
+    Double_t ThetaVirtLab(Bool_t = 0);
+    Double_t PhiVirtLab(Bool_t = 0);
     Double_t ThetaPQ(Int_t, Bool_t = 0);
     Double_t PhiPQ(Int_t, Bool_t = 0);
     Double_t CosThetaPQ(Int_t, Bool_t = 0);
     Double_t PTrans2PQ(Int_t, Bool_t = 0);
     Double_t PLong2PQ(Int_t, Bool_t = 0);
-    Int_t Sector(Int_t, Bool_t = 0); // Check if it is correct !!! Add k==1
+    Int_t Sector(Int_t, Bool_t = 0);
 
     // Kinematic variables
     Double_t Q2(Bool_t = 0);

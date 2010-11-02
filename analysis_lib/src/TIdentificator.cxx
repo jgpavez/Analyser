@@ -107,7 +107,7 @@ Double_t TIdentificator::Moment(Int_t k, Bool_t kind)
 
 Double_t TIdentificator::Mass2(Int_t k)
 {
-      return Momentum(k) * Momentum(k) * (pow(Betta(k), -2) - 1);
+    return Momentum(k) * Momentum(k) * (pow(Betta(k), -2) - 1);
 }
 
 
@@ -478,5 +478,4 @@ Int_t TIdentificator::FidSector(Int_t k, Bool_t kind)
 }
 
 
-
-#include <../src/Categorize.C>
+#include "Categorize.C"

@@ -85,14 +85,16 @@ inline Double_t TIdentificator::X(Int_t k)
 
 
 
-inline Double_t TIdentificator::Y(Int_t k) {
+inline Double_t TIdentificator::Y(Int_t k)
+{
     fEVNT = (TEVNTClass*)fCT->GetBankRow("EVNT",k);
     return fEVNT->Y;
 }
 
 
 
-inline Double_t TIdentificator::Z(Int_t k) {
+inline Double_t TIdentificator::Z(Int_t k)
+{
     fEVNT = (TEVNTClass*)fCT->GetBankRow("EVNT",k);
     return fEVNT->Z;
 }
