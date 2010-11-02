@@ -4,7 +4,7 @@
 <!--                                             -->
 <!-- Author: ROOT team (rootdev@pcroot.cern.ch)  -->
 <!--                                             -->
-<!--   Date: Tue Nov  2 02:30:12 2010            -->
+<!--   Date: Tue Nov  2 02:50:44 2010            -->
 <!--                                             -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -508,7 +508,7 @@
 
 
 
-<a name="lwU2s"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="lwU2s"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the full momentum for the particle in the row k of the EVNT</span>
     <span class="comment">// bank.</span>
@@ -522,9 +522,9 @@
 
 
 
-<a name="Yvls2E"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="Yvls2E"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
-    <span class="comment">// Deprecated. Use <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>.</span>
+    <span class="comment">// Deprecated. Use <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>.</span>
 
     <span class="keyword">if</span> (kind == 0) {
         <a href="../TIdentificator.html#TIdentificator:fEVNT" title="TEVNTClass* TIdentificator::fEVNT">fEVNT</a> = (<a href="../TEVNTClass.html">TEVNTClass</a> *) fCT-&gt;GetBankRow(<span class="string">"EVNT"</span>, k);
@@ -539,16 +539,16 @@
 
 
 
-<a name="jFI.JB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Mass2" title="Double_t TIdentificator::Mass2(Int_t )">Mass2</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k)
+<a name="jFI.JB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Mass2" title="Double_t TIdentificator::Mass2(Int_t k)">Mass2</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k)
 {
     <span class="comment">// Return the mass squared for the particle in the row k of the EVNT bank.</span>
 
-    <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k) * (pow(<a href="../TIdentificator.html#TIdentificator:Betta" title="Double_t TIdentificator::Betta(Int_t k)">Betta</a>(k), -2) - 1);
+    <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k) * (pow(<a href="../TIdentificator.html#TIdentificator:Betta" title="Double_t TIdentificator::Betta(Int_t k)">Betta</a>(k), -2) - 1);
 }
 
 
 
-<a name="NZF4NB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:ThetaLab" title="Double_t TIdentificator::ThetaLab(Int_t ,Bool_t =0)">ThetaLab</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="NZF4NB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:ThetaLab" title="Double_t TIdentificator::ThetaLab(Int_t k,Bool_t kind=0)">ThetaLab</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the polar angle in Lab frame for the particle in the row k of</span>
     <span class="comment">// the EVNT bank.</span>
@@ -559,9 +559,9 @@
     <a href="../ListOfTypes.html#Double_t">Double_t</a> theta;
 
     <span class="keyword">if</span> (kind == 0) {
-        theta = acos(<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k) / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k));
+        theta = acos(<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k) / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k));
     } <span class="keyword">else</span> {                            <span class="comment">// Fix this in case kind != 1</span>
-        theta = acos(<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k,1) / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k,1));
+        theta = acos(<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k,1) / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k,1));
     }
 
     <span class="keyword">return</span> theta;
@@ -569,7 +569,7 @@
 
 
 
-<a name="uQ2XAD"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PhiLab" title="Double_t TIdentificator::PhiLab(Int_t ,Bool_t =0)">PhiLab</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="uQ2XAD"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PhiLab" title="Double_t TIdentificator::PhiLab(Int_t k,Bool_t kind=0)">PhiLab</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the azimuthal angle in Lab frame for the particle in the row k</span>
     <span class="comment">// of the EVNT bank.</span>
@@ -596,7 +596,7 @@
 
 
 
-<a name="NZ5ZqE"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:ThetaVirtLab" title="Double_t TIdentificator::ThetaVirtLab(Bool_t =0)">ThetaVirtLab</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind) <span class="comment">// Check if it is correct !!!</span>
+<a name="NZ5ZqE"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:ThetaVirtLab" title="Double_t TIdentificator::ThetaVirtLab(Bool_t kind=0)">ThetaVirtLab</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind) <span class="comment">// Check if it is correct !!!</span>
 {
     <span class="comment">// Return the polar angle of the virtual photon in Lab frame, for the</span>
     <span class="comment">// particle in the row k of the EVNT bank.</span>
@@ -607,11 +607,11 @@
     <a href="../ListOfTypes.html#Double_t">Double_t</a> theta_virt;
 
     <span class="keyword">if</span> (kind == 0) {
-        theta_virt = acos((<a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) * cos(<a href="../TIdentificator.html#TIdentificator:ThetaLab" title="Double_t TIdentificator::ThetaLab(Int_t ,Bool_t =0)">ThetaLab</a>(0))) /
-                           (sqrt(<a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t =0)">Q2</a>() + <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>() * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>())));
+        theta_virt = acos((<a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) * cos(<a href="../TIdentificator.html#TIdentificator:ThetaLab" title="Double_t TIdentificator::ThetaLab(Int_t k,Bool_t kind=0)">ThetaLab</a>(0))) /
+                           (sqrt(<a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t kind=0)">Q2</a>() + <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>() * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>())));
     } <span class="keyword">else</span> {                            <span class="comment">// Fix this in case kind != 1</span>
-        theta_virt = acos((<a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0,1) * cos(<a href="../TIdentificator.html#TIdentificator:ThetaLab" title="Double_t TIdentificator::ThetaLab(Int_t ,Bool_t =0)">ThetaLab</a>(0,1))) /
-                           (sqrt(<a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t =0)">Q2</a>(1) + <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>(1) * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>(1))));
+        theta_virt = acos((<a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0,1) * cos(<a href="../TIdentificator.html#TIdentificator:ThetaLab" title="Double_t TIdentificator::ThetaLab(Int_t k,Bool_t kind=0)">ThetaLab</a>(0,1))) /
+                           (sqrt(<a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t kind=0)">Q2</a>(1) + <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>(1) * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>(1))));
     }
 
     <span class="keyword">return</span> theta_virt;
@@ -619,7 +619,7 @@
 
 
 
-<a name="u.tT2B"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PhiVirtLab" title="Double_t TIdentificator::PhiVirtLab(Bool_t =0)">PhiVirtLab</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind) <span class="comment">// Check if it is correct !!!</span>
+<a name="u.tT2B"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PhiVirtLab" title="Double_t TIdentificator::PhiVirtLab(Bool_t kind=0)">PhiVirtLab</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind) <span class="comment">// Check if it is correct !!!</span>
 {
     <span class="comment">// Return the azimuthal angle of the virtual photon in Lab frame, for the</span>
     <span class="comment">// particle in the row k of the EVNT bank.</span>
@@ -629,15 +629,15 @@
 
     <a href="../ListOfTypes.html#Double_t">Double_t</a> phi_virt;
 
-    <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:PhiLab" title="Double_t TIdentificator::PhiLab(Int_t ,Bool_t =0)">PhiLab</a>(0,kind) &gt; 0) phi_virt = - 180 + <a href="../TIdentificator.html#TIdentificator:PhiLab" title="Double_t TIdentificator::PhiLab(Int_t ,Bool_t =0)">PhiLab</a>(0,kind);
-    <span class="keyword">else</span> phi_virt = 180 + <a href="../TIdentificator.html#TIdentificator:PhiLab" title="Double_t TIdentificator::PhiLab(Int_t ,Bool_t =0)">PhiLab</a>(0,kind);
+    <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:PhiLab" title="Double_t TIdentificator::PhiLab(Int_t k,Bool_t kind=0)">PhiLab</a>(0,kind) &gt; 0) phi_virt = - 180 + <a href="../TIdentificator.html#TIdentificator:PhiLab" title="Double_t TIdentificator::PhiLab(Int_t k,Bool_t kind=0)">PhiLab</a>(0,kind);
+    <span class="keyword">else</span> phi_virt = 180 + <a href="../TIdentificator.html#TIdentificator:PhiLab" title="Double_t TIdentificator::PhiLab(Int_t k,Bool_t kind=0)">PhiLab</a>(0,kind);
 
     <span class="keyword">return</span> phi_virt;
 }
 
 
 
-<a name="kuYgOB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t ,Bool_t =0)">ThetaPQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="kuYgOB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t k,Bool_t kind=0)">ThetaPQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the polar angle of the born particle in respect to virtual</span>
     <span class="comment">// photon direction, for the particle in the row k of the EVNT bank. It</span>
@@ -647,15 +647,15 @@
     <span class="comment">// instead.</span>
 
     <span class="keyword">if</span> (kind == 0) {
-        <span class="keyword">return</span> acos(<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k) / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k));
+        <span class="keyword">return</span> acos(<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k) / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k));
     } <span class="keyword">else</span> {                            <span class="comment">// Fix this in case kind != 1</span>
-        <span class="keyword">return</span> acos(<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k,1) / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k,1));
+        <span class="keyword">return</span> acos(<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k,1) / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k,1));
     }
 }
 
 
 
-<a name="lWlPt"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PhiPQ" title="Double_t TIdentificator::PhiPQ(Int_t ,Bool_t =0)">PhiPQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="lWlPt"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PhiPQ" title="Double_t TIdentificator::PhiPQ(Int_t k,Bool_t kind=0)">PhiPQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the azimuthal angle of the born particle in respect to virtual</span>
     <span class="comment">// photon direction, for the particle in the row k of the EVNT bank. It</span>
@@ -695,9 +695,9 @@
 
 
 
-<a name="nbVtXB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t ,Bool_t =0)">CosThetaPQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="nbVtXB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t k,Bool_t kind=0)">CosThetaPQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
-    <span class="comment">// Return the cosine of <a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t ,Bool_t =0)">ThetaPQ</a>, for the particle in the row k of the EVNT</span>
+    <span class="comment">// Return the cosine of <a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t k,Bool_t kind=0)">ThetaPQ</a>, for the particle in the row k of the EVNT</span>
     <span class="comment">// bank. It doesn'<a href="../TIdentificator.html">t</a> apply for electron.</span>
     <span class="comment">//</span>
     <span class="comment">// If kind is zero, the EVNT bank is used. If not, the GSIM bank is used</span>
@@ -705,16 +705,16 @@
 
     <span class="keyword">if</span> (kind == 0)
         <span class="keyword">return</span> (<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k) * (<a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(0)) - <a href="../TIdentificator.html#TIdentificator:Px" title="Double_t TIdentificator::Px(Int_t k,Bool_t kind=0)">Px</a>(k) * <a href="../TIdentificator.html#TIdentificator:Px" title="Double_t TIdentificator::Px(Int_t k,Bool_t kind=0)">Px</a>(0) - <a href="../TIdentificator.html#TIdentificator:Py" title="Double_t TIdentificator::Py(Int_t k,Bool_t kind=0)">Py</a>(k) * <a href="../TIdentificator.html#TIdentificator:Py" title="Double_t TIdentificator::Py(Int_t k,Bool_t kind=0)">Py</a>(0)) /
-                            (sqrt(<a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>() * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>() + <a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t =0)">Q2</a>()) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k));
+                            (sqrt(<a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>() * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>() + <a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t kind=0)">Q2</a>()) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k));
     <span class="keyword">else</span>                                <span class="comment">// Fix this in case kind != 1</span>
         <span class="keyword">return</span> (<a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(k,1) * (<a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Pz" title="Double_t TIdentificator::Pz(Int_t k,Bool_t kind=0)">Pz</a>(0,1)) - <a href="../TIdentificator.html#TIdentificator:Px" title="Double_t TIdentificator::Px(Int_t k,Bool_t kind=0)">Px</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:Px" title="Double_t TIdentificator::Px(Int_t k,Bool_t kind=0)">Px</a>(0,1) -
                 <a href="../TIdentificator.html#TIdentificator:Py" title="Double_t TIdentificator::Py(Int_t k,Bool_t kind=0)">Py</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:Py" title="Double_t TIdentificator::Py(Int_t k,Bool_t kind=0)">Py</a>(0,1)) /
-                            (sqrt(<a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>(1) * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>(1) + <a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t =0)">Q2</a>(1)) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k,1));
+                            (sqrt(<a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>(1) * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>(1) + <a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t kind=0)">Q2</a>(1)) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k,1));
 }
 
 
 
-<a name="mCc9YB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PTrans2PQ" title="Double_t TIdentificator::PTrans2PQ(Int_t ,Bool_t =0)">PTrans2PQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="mCc9YB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PTrans2PQ" title="Double_t TIdentificator::PTrans2PQ(Int_t k,Bool_t kind=0)">PTrans2PQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the momentum transverse component squared of the born particle</span>
     <span class="comment">// in respect to virtual photon direction, for the particle in the row k</span>
@@ -724,16 +724,16 @@
     <span class="comment">// instead.</span>
 
     <span class="keyword">if</span> (kind == 0)
-        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k) *
-                            (1 - <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t ,Bool_t =0)">CosThetaPQ</a>(k) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t ,Bool_t =0)">CosThetaPQ</a>(k));
+        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k) *
+                            (1 - <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t k,Bool_t kind=0)">CosThetaPQ</a>(k) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t k,Bool_t kind=0)">CosThetaPQ</a>(k));
     <span class="keyword">else</span>                                <span class="comment">// Fix this in case kind != 1</span>
-        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k,1) *
-                            (1 - <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t ,Bool_t =0)">CosThetaPQ</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t ,Bool_t =0)">CosThetaPQ</a>(k,1));
+        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k,1) *
+                            (1 - <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t k,Bool_t kind=0)">CosThetaPQ</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t k,Bool_t kind=0)">CosThetaPQ</a>(k,1));
 }
 
 
 
-<a name="bvWviC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PLong2PQ" title="Double_t TIdentificator::PLong2PQ(Int_t ,Bool_t =0)">PLong2PQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="bvWviC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PLong2PQ" title="Double_t TIdentificator::PLong2PQ(Int_t k,Bool_t kind=0)">PLong2PQ</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the momentum longitudinal component squared of the born particle</span>
     <span class="comment">// in respect to virtual photon direction, for the particle in the row k</span>
@@ -743,14 +743,14 @@
     <span class="comment">// instead.</span>
 
     <span class="keyword">if</span> (kind == 0)
-        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t ,Bool_t =0)">CosThetaPQ</a>(k) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t ,Bool_t =0)">CosThetaPQ</a>(k);
+        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t k,Bool_t kind=0)">CosThetaPQ</a>(k) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t k,Bool_t kind=0)">CosThetaPQ</a>(k);
     <span class="keyword">else</span>                                <span class="comment">// Fix this in case kind != 1</span>
-        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t ,Bool_t =0)">CosThetaPQ</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t ,Bool_t =0)">CosThetaPQ</a>(k,1);
+        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t k,Bool_t kind=0)">CosThetaPQ</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:CosThetaPQ" title="Double_t TIdentificator::CosThetaPQ(Int_t k,Bool_t kind=0)">CosThetaPQ</a>(k,1);
 }
 
 
 
-<a name="OgZqpD"></a><a href="../ListOfTypes.html#Int_t">Int_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Sector" title="Int_t TIdentificator::Sector(Int_t ,Bool_t =0)">Sector</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind) <span class="comment">// Check if it is correct !!! Add k==1</span>
+<a name="OgZqpD"></a><a href="../ListOfTypes.html#Int_t">Int_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Sector" title="Int_t TIdentificator::Sector(Int_t k,Bool_t kind=0)">Sector</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind) <span class="comment">// Check if it is correct !!! Add k==1</span>
 {
     <span class="comment">// Return the sector of the CLAS detector where the particle was detected,</span>
     <span class="comment">// for the particle in the row k of the EVNT bank.</span>
@@ -771,7 +771,7 @@
 
 
 
-<a name="MHKZCC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t =0)">Q2</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="MHKZCC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t kind=0)">Q2</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the four-momentum transfer of the electron-nucleon interaction.</span>
     <span class="comment">//</span>
@@ -779,17 +779,17 @@
     <span class="comment">// instead.</span>
 
     <span class="keyword">if</span> (kind == 0) {
-        <span class="keyword">return</span> 4. * <a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) *
-                            sin(<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t ,Bool_t =0)">ThetaPQ</a>(0)/2) * sin(<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t ,Bool_t =0)">ThetaPQ</a>(0)/2);
+        <span class="keyword">return</span> 4. * <a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) *
+                            sin(<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t k,Bool_t kind=0)">ThetaPQ</a>(0)/2) * sin(<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t k,Bool_t kind=0)">ThetaPQ</a>(0)/2);
     } <span class="keyword">else</span> {                            <span class="comment">// Fix this in case kind != 1</span>
-        <span class="keyword">return</span> 4. * <a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0,1) *
-                            sin(<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t ,Bool_t =0)">ThetaPQ</a>(0,1)/2) * sin(<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t ,Bool_t =0)">ThetaPQ</a>(0,1)/2);
+        <span class="keyword">return</span> 4. * <a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0,1) *
+                            sin(<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t k,Bool_t kind=0)">ThetaPQ</a>(0,1)/2) * sin(<a href="../TIdentificator.html#TIdentificator:ThetaPQ" title="Double_t TIdentificator::ThetaPQ(Int_t k,Bool_t kind=0)">ThetaPQ</a>(0,1)/2);
     }
 }
 
 
 
-<a name="B_FOI"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:W" title="Double_t TIdentificator::W(Bool_t =0)">W</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="B_FOI"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:W" title="Double_t TIdentificator::W(Bool_t kind=0)">W</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the invariant mass of the electron-nucleon interaction.</span>
     <span class="comment">//</span>
@@ -797,15 +797,15 @@
     <span class="comment">// instead.</span>
 
     <span class="keyword">if</span> (kind == 0) {
-        <span class="keyword">return</span> sqrt(0.938 * 0.938 + 2 * 0.938 * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>() - <a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t =0)">Q2</a>());
+        <span class="keyword">return</span> sqrt(0.938 * 0.938 + 2 * 0.938 * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>() - <a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t kind=0)">Q2</a>());
     } <span class="keyword">else</span> {                            <span class="comment">// Fix this in case kind != 1</span>
-        <span class="keyword">return</span> sqrt(0.938 * 0.938 + 2 * 0.938 * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>(1) - <a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t =0)">Q2</a>(1));
+        <span class="keyword">return</span> sqrt(0.938 * 0.938 + 2 * 0.938 * <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>(1) - <a href="../TIdentificator.html#TIdentificator:Q2" title="Double_t TIdentificator::Q2(Bool_t kind=0)">Q2</a>(1));
     }
 }
 
 
 
-<a name="XV7nbE"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="XV7nbE"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>(<a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <span class="comment">// Return the energy transfer of the electron-nucleon interaction.</span>
     <span class="comment">//</span>
@@ -813,16 +813,16 @@
     <span class="comment">// instead.</span>
 
     <span class="keyword">if</span> (kind == 0) {
-        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0);
+        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0);
     } <span class="keyword">else</span> {                            <span class="comment">// Fix this in case kind != 1</span>
-        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0,1);
+        <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:kEbeam" title="const Double_t TIdentificator::kEbeam">kEbeam</a> - <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0,1);
     }
 }
 
 
 
 
-<a name="mAdfTC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:ZhPi" title="Double_t TIdentificator::ZhPi(Int_t ,Bool_t =0,Double_t =0.139)">ZhPi</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind, <a href="../ListOfTypes.html#Double_t">Double_t</a> Mass)
+<a name="mAdfTC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:ZhPi" title="Double_t TIdentificator::ZhPi(Int_t k,Bool_t kind=0,Double_t Mass=0.139)">ZhPi</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind, <a href="../ListOfTypes.html#Double_t">Double_t</a> Mass)
 {
     <span class="comment">// Return the energy fraction of the born particle, for the particle in</span>
     <span class="comment">// the row k of the EVNT bank. It doesn'<a href="../TIdentificator.html">t</a> apply for electron.</span>
@@ -831,22 +831,22 @@
     <span class="comment">// instead.</span>
 
     <span class="keyword">if</span> (kind == 0)
-        <span class="keyword">return</span> sqrt(Mass * Mass + <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k)) / <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>(<a href="../TIdentificator.html#TIdentificator:fCT" title="TClasTool* TIdentificator::fCT">fCT</a>);
+        <span class="keyword">return</span> sqrt(Mass * Mass + <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k)) / <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>(<a href="../TIdentificator.html#TIdentificator:fCT" title="TClasTool* TIdentificator::fCT">fCT</a>);
     <span class="keyword">else</span>                                <span class="comment">// Fix this in case kind != 1</span>
-        <span class="keyword">return</span> sqrt(Mass * Mass + <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k,1)) / <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t =0)">Nu</a>(1);
+        <span class="keyword">return</span> sqrt(Mass * Mass + <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k,1) * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k,1)) / <a href="../TIdentificator.html#TIdentificator:Nu" title="Double_t TIdentificator::Nu(Bool_t kind=0)">Nu</a>(1);
 }
 
 
 
-<a name="SjxYKC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t ,Int_t )">TimeCorr4</a>(<a href="../ListOfTypes.html#Double_t">Double_t</a> mass, <a href="../ListOfTypes.html#Int_t">Int_t</a> k)
+<a name="SjxYKC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t mass,Int_t k)">TimeCorr4</a>(<a href="../ListOfTypes.html#Double_t">Double_t</a> mass, <a href="../ListOfTypes.html#Int_t">Int_t</a> k)
 {
     <span class="keyword">return</span> (<a href="../TIdentificator.html#TIdentificator:PathSC" title="Double_t TIdentificator::PathSC(Int_t k)">PathSC</a>(0)/30.) - <a href="../TIdentificator.html#TIdentificator:TimeSC" title="Double_t TIdentificator::TimeSC(Int_t k)">TimeSC</a>(0) + <a href="../TIdentificator.html#TIdentificator:TimeSC" title="Double_t TIdentificator::TimeSC(Int_t k)">TimeSC</a>(k) - 0.08 -
-                (<a href="../TIdentificator.html#TIdentificator:PathSC" title="Double_t TIdentificator::PathSC(Int_t k)">PathSC</a>(k) / 30.) * sqrt(pow(mass/<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(k),2) + 1);
+                (<a href="../TIdentificator.html#TIdentificator:PathSC" title="Double_t TIdentificator::PathSC(Int_t k)">PathSC</a>(k) / 30.) * sqrt(pow(mass/<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(k),2) + 1);
 }
 
 
 
-<a name="N3gGFC"></a><a href="../TString.html">TString</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:GetCategorization" title="TString TIdentificator::GetCategorization(Int_t ) or overloads">GetCategorization</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k)
+<a name="N3gGFC"></a><a href="../TString.html">TString</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:GetCategorization" title="TString TIdentificator::GetCategorization(Int_t k) or overloads">GetCategorization</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k)
 {
     <a href="../ListOfTypes.html#Int_t">Int_t</a> number_dc = <a href="../TIdentificator.html#TIdentificator:fCT" title="TClasTool* TIdentificator::fCT">fCT</a>-><a href="../TClasTool.html#TClasTool:GetNRows" title="Int_t TClasTool::GetNRows(const Char_t* bankname=&quot;EVNT&quot;)">GetNRows</a>(<span class="string">"DCPB"</span>);
     <a href="../ListOfTypes.html#Int_t">Int_t</a> number_cc = <a href="../TIdentificator.html#TIdentificator:fCT" title="TClasTool* TIdentificator::fCT">fCT</a>-><a href="../TClasTool.html#TClasTool:GetNRows" title="Int_t TClasTool::GetNRows(const Char_t* bankname=&quot;EVNT&quot;)">GetNRows</a>(<span class="string">"CCPB"</span>);
@@ -866,10 +866,10 @@
                     <a href="../TIdentificator.html#TIdentificator:StatDC" title="Int_t TIdentificator::StatDC(Int_t k)">StatDC</a>(0) &gt; 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:StatEC" title="Int_t TIdentificator::StatEC(Int_t k)">StatEC</a>(0) &gt; 0 &amp;&amp;
                     <a href="../TIdentificator.html#TIdentificator:DCStatus" title="Double_t TIdentificator::DCStatus(Int_t k)">DCStatus</a>(0) &gt; 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:SCStatus" title="Double_t TIdentificator::SCStatus(Int_t k)">SCStatus</a>(0) == 33 &amp;&amp;
                     <a href="../TIdentificator.html#TIdentificator:Nphe" title="Double_t TIdentificator::Nphe(Int_t k)">Nphe</a>(0) &gt; 25 &amp;&amp;
-                    <a href="../TIdentificator.html#TIdentificator:Etot" title="Double_t TIdentificator::Etot(Int_t k)">Etot</a>(0) / 0.27 + 0.4 &gt; <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(0) &amp;&amp;
-                    <a href="../TIdentificator.html#TIdentificator:Etot" title="Double_t TIdentificator::Etot(Int_t k)">Etot</a>(0) / 0.27 - 0.4 &lt; <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(0) &amp;&amp;
-                    <a href="../TIdentificator.html#TIdentificator:Ein" title="Double_t TIdentificator::Ein(Int_t k)">Ein</a>(0) + <a href="../TIdentificator.html#TIdentificator:Eout" title="Double_t TIdentificator::Eout(Int_t k)">Eout</a>(0) &gt; 0.8 * 0.27 * <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(0) &amp;&amp;
-                    <a href="../TIdentificator.html#TIdentificator:Ein" title="Double_t TIdentificator::Ein(Int_t k)">Ein</a>(0) + <a href="../TIdentificator.html#TIdentificator:Eout" title="Double_t TIdentificator::Eout(Int_t k)">Eout</a>(0) &lt; 1.2 * 0.27 * <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(0) &amp;&amp;
+                    <a href="../TIdentificator.html#TIdentificator:Etot" title="Double_t TIdentificator::Etot(Int_t k)">Etot</a>(0) / 0.27 + 0.4 &gt; <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(0) &amp;&amp;
+                    <a href="../TIdentificator.html#TIdentificator:Etot" title="Double_t TIdentificator::Etot(Int_t k)">Etot</a>(0) / 0.27 - 0.4 &lt; <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(0) &amp;&amp;
+                    <a href="../TIdentificator.html#TIdentificator:Ein" title="Double_t TIdentificator::Ein(Int_t k)">Ein</a>(0) + <a href="../TIdentificator.html#TIdentificator:Eout" title="Double_t TIdentificator::Eout(Int_t k)">Eout</a>(0) &gt; 0.8 * 0.27 * <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(0) &amp;&amp;
+                    <a href="../TIdentificator.html#TIdentificator:Ein" title="Double_t TIdentificator::Ein(Int_t k)">Ein</a>(0) + <a href="../TIdentificator.html#TIdentificator:Eout" title="Double_t TIdentificator::Eout(Int_t k)">Eout</a>(0) &lt; 1.2 * 0.27 * <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(0) &amp;&amp;
                     <a href="../TIdentificator.html#TIdentificator:FidCheckCut" title="Bool_t TIdentificator::FidCheckCut()">FidCheckCut</a>() == 1)
             partId = <span class="string">"electron"</span>;
 
@@ -882,31 +882,31 @@
             <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:Charge" title="Double_t TIdentificator::Charge(Int_t k)">Charge</a>(k) == 1 &amp;&amp;
                         <a href="../TIdentificator.html#TIdentificator:Status" title="Double_t TIdentificator::Status(Int_t k)">Status</a>(k) &gt; 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:Status" title="Double_t TIdentificator::Status(Int_t k)">Status</a>(k) &lt; 100 &amp;&amp;
                         <a href="../TIdentificator.html#TIdentificator:StatDC" title="Int_t TIdentificator::StatDC(Int_t k)">StatDC</a>(k) &gt; 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:DCStatus" title="Double_t TIdentificator::DCStatus(Int_t k)">DCStatus</a>(k) &gt; 0) {
-                <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k)&gt;=2.7) {
+                <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k)&gt;=2.7) {
                     <span class="keyword">if</span> (number_cc != 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:StatCC" title="Int_t TIdentificator::StatCC(Int_t k)">StatCC</a>(k) &gt; 0 &amp;&amp;
                                 <a href="../TIdentificator.html#TIdentificator:Nphe" title="Double_t TIdentificator::Nphe(Int_t k)">Nphe</a>(k) &gt; 25 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:Chi2CC" title="Double_t TIdentificator::Chi2CC(Int_t k)">Chi2CC</a>(k) &lt; 5 / 57.3)
                         partId = <span class="string">"high energy pion +"</span>;
                 }
 
-                <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k) &lt; 2.7) {
+                <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k) &lt; 2.7) {
                     <span class="keyword">if</span> (number_sc != 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:StatSC" title="Int_t TIdentificator::StatSC(Int_t k)">StatSC</a>(k) &gt; 0 &amp;&amp;
-                                ((<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k) &lt; 1 &amp;&amp;
-                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t ,Int_t )">TimeCorr4</a>(0.139,k) &gt;= -1.46 &amp;&amp;
-                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t ,Int_t )">TimeCorr4</a>(0.139,k) &lt;= 0.15) ||
-                                (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k) &gt;=1 &amp;&amp;
-                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t ,Int_t )">TimeCorr4</a>(0.139,k) &gt;= -1.38 &amp;&amp;
-                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t ,Int_t )">TimeCorr4</a>(0.139,k) &lt;= 0.53)))
+                                ((<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k) &lt; 1 &amp;&amp;
+                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t mass,Int_t k)">TimeCorr4</a>(0.139,k) &gt;= -1.46 &amp;&amp;
+                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t mass,Int_t k)">TimeCorr4</a>(0.139,k) &lt;= 0.15) ||
+                                (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k) &gt;=1 &amp;&amp;
+                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t mass,Int_t k)">TimeCorr4</a>(0.139,k) &gt;= -1.38 &amp;&amp;
+                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t mass,Int_t k)">TimeCorr4</a>(0.139,k) &lt;= 0.53)))
                         partId = <span class="string">"low energy pion +"</span>;
                 }
 
-                <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k) &lt; 2.) {
+                <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k) &lt; 2.) {
                     <span class="keyword">if</span> (number_sc != 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:StatSC" title="Int_t TIdentificator::StatSC(Int_t k)">StatSC</a>(k) &gt; 0 &amp;&amp;
-                                ((<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k) &gt;= 1. &amp;&amp;
-                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t ,Int_t )">TimeCorr4</a>(0.938,k) &gt;= -0.69 &amp;&amp;
-                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t ,Int_t )">TimeCorr4</a>(0.938,k) &lt;= 1.38) ||
-                                (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k) &lt; 1. &amp;&amp;
-                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t ,Int_t )">TimeCorr4</a>(0.938,k) &gt;= -3.78 &amp;&amp;
-                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t ,Int_t )">TimeCorr4</a>(0.938,k) &lt;= 6.75)))
+                                ((<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k) &gt;= 1. &amp;&amp;
+                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t mass,Int_t k)">TimeCorr4</a>(0.938,k) &gt;= -0.69 &amp;&amp;
+                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t mass,Int_t k)">TimeCorr4</a>(0.938,k) &lt;= 1.38) ||
+                                (<a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k) &lt; 1. &amp;&amp;
+                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t mass,Int_t k)">TimeCorr4</a>(0.938,k) &gt;= -3.78 &amp;&amp;
+                                    <a href="../TIdentificator.html#TIdentificator:TimeCorr4" title="Double_t TIdentificator::TimeCorr4(Double_t mass,Int_t k)">TimeCorr4</a>(0.938,k) &lt;= 6.75)))
                         partId = <span class="string">"low energy proton"</span>;
                 }
 
@@ -915,10 +915,10 @@
                             <a href="../TIdentificator.html#TIdentificator:StatCC" title="Int_t TIdentificator::StatCC(Int_t k)">StatCC</a>(k) &gt; 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:StatSC" title="Int_t TIdentificator::StatSC(Int_t k)">StatSC</a>(k) &gt; 0 &amp;&amp;
                             <a href="../TIdentificator.html#TIdentificator:StatDC" title="Int_t TIdentificator::StatDC(Int_t k)">StatDC</a>(k) &gt; 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:StatEC" title="Int_t TIdentificator::StatEC(Int_t k)">StatEC</a>(k) &gt; 0 &amp;&amp;
                             <a href="../TIdentificator.html#TIdentificator:DCStatus" title="Double_t TIdentificator::DCStatus(Int_t k)">DCStatus</a>(k) &gt; 0 &amp;&amp; <a href="../TIdentificator.html#TIdentificator:Nphe" title="Double_t TIdentificator::Nphe(Int_t k)">Nphe</a>(k) &gt; 25 &amp;&amp;
-                            <a href="../TIdentificator.html#TIdentificator:Etot" title="Double_t TIdentificator::Etot(Int_t k)">Etot</a>(k) / 0.27 + 0.4 &gt; <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k) &amp;&amp;
-                            <a href="../TIdentificator.html#TIdentificator:Etot" title="Double_t TIdentificator::Etot(Int_t k)">Etot</a>(k) / 0.27 - 0.4 &lt; <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k) &amp;&amp;
-                            <a href="../TIdentificator.html#TIdentificator:Ein" title="Double_t TIdentificator::Ein(Int_t k)">Ein</a>(k) + <a href="../TIdentificator.html#TIdentificator:Eout" title="Double_t TIdentificator::Eout(Int_t k)">Eout</a>(k) &gt; 0.8 * 0.27 * <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k) &amp;&amp;
-                            <a href="../TIdentificator.html#TIdentificator:Ein" title="Double_t TIdentificator::Ein(Int_t k)">Ein</a>(k) + <a href="../TIdentificator.html#TIdentificator:Eout" title="Double_t TIdentificator::Eout(Int_t k)">Eout</a>(k) &lt; 1.2 * 0.27 * <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t ,Bool_t =0)">Moment</a>(k))
+                            <a href="../TIdentificator.html#TIdentificator:Etot" title="Double_t TIdentificator::Etot(Int_t k)">Etot</a>(k) / 0.27 + 0.4 &gt; <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k) &amp;&amp;
+                            <a href="../TIdentificator.html#TIdentificator:Etot" title="Double_t TIdentificator::Etot(Int_t k)">Etot</a>(k) / 0.27 - 0.4 &lt; <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k) &amp;&amp;
+                            <a href="../TIdentificator.html#TIdentificator:Ein" title="Double_t TIdentificator::Ein(Int_t k)">Ein</a>(k) + <a href="../TIdentificator.html#TIdentificator:Eout" title="Double_t TIdentificator::Eout(Int_t k)">Eout</a>(k) &gt; 0.8 * 0.27 * <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k) &amp;&amp;
+                            <a href="../TIdentificator.html#TIdentificator:Ein" title="Double_t TIdentificator::Ein(Int_t k)">Ein</a>(k) + <a href="../TIdentificator.html#TIdentificator:Eout" title="Double_t TIdentificator::Eout(Int_t k)">Eout</a>(k) &lt; 1.2 * 0.27 * <a href="../TIdentificator.html#TIdentificator:Moment" title="Double_t TIdentificator::Moment(Int_t k,Bool_t kind=0)">Moment</a>(k))
                     partId = <span class="string">"positron"</span>;
             }
         }
@@ -929,7 +929,7 @@
 
 
 
-<a name="UybRaB"></a><a href="../TString.html">TString</a>* <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:GetCategorization" title="TString TIdentificator::GetCategorization(Int_t ) or overloads">GetCategorization</a>()
+<a name="UybRaB"></a><a href="../TString.html">TString</a>* <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:GetCategorization" title="TString TIdentificator::GetCategorization(Int_t k) or overloads">GetCategorization</a>()
 {
     <a href="../ListOfTypes.html#Int_t">Int_t</a> number = <a href="../TIdentificator.html#TIdentificator:fCT" title="TClasTool* TIdentificator::fCT">fCT</a>-><a href="../TClasTool.html#TClasTool:GetNRows" title="Int_t TClasTool::GetNRows(const Char_t* bankname=&quot;EVNT&quot;)">GetNRows</a>(<span class="string">"EVNT"</span>);
 
@@ -938,7 +938,7 @@
 
     <span class="keyword">if</span> (number != 0) {
         <span class="keyword">for</span> (<a href="../ListOfTypes.html#Int_t">Int_t</a> i = 0; i &lt; number; i++)
-            <a href="../TIdentificator.html#TIdentificator:fPartIds" title="TString* TIdentificator::fPartIds">fPartIds</a>[i] = <a href="../TIdentificator.html#TIdentificator:GetCategorization" title="TString TIdentificator::GetCategorization(Int_t ) or overloads">GetCategorization</a>(i);
+            <a href="../TIdentificator.html#TIdentificator:fPartIds" title="TString* TIdentificator::fPartIds">fPartIds</a>[i] = <a href="../TIdentificator.html#TIdentificator:GetCategorization" title="TString TIdentificator::GetCategorization(Int_t k) or overloads">GetCategorization</a>(i);
     }
 
     <span class="keyword">return</span> <a href="../TIdentificator.html#TIdentificator:fPartIds" title="TString* TIdentificator::fPartIds">fPartIds</a>;
@@ -949,7 +949,7 @@
 <a name="ugCorB"></a><span class="keyword">void</span> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:PrintCategorization" title="void TIdentificator::PrintCategorization() or overloads">PrintCategorization</a>()
 {
     <a href="../ListOfTypes.html#Int_t">Int_t</a> number = <a href="../TIdentificator.html#TIdentificator:fCT" title="TClasTool* TIdentificator::fCT">fCT</a>-><a href="../TClasTool.html#TClasTool:GetNRows" title="Int_t TClasTool::GetNRows(const Char_t* bankname=&quot;EVNT&quot;)">GetNRows</a>(<span class="string">"EVNT"</span>);
-    <a href="../TIdentificator.html#TIdentificator:fPartIds" title="TString* TIdentificator::fPartIds">fPartIds</a> = <a href="../TIdentificator.html#TIdentificator:GetCategorization" title="TString TIdentificator::GetCategorization(Int_t ) or overloads">GetCategorization</a>();
+    <a href="../TIdentificator.html#TIdentificator:fPartIds" title="TString* TIdentificator::fPartIds">fPartIds</a> = <a href="../TIdentificator.html#TIdentificator:GetCategorization" title="TString TIdentificator::GetCategorization(Int_t k) or overloads">GetCategorization</a>();
 
     <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:fPartIds" title="TString* TIdentificator::fPartIds">fPartIds</a>-><a href="../TString.html#TString:CompareTo" title="int TString::CompareTo(const char* cs,TString::ECaseCompare cmp=kExact) or overloads">CompareTo</a>(<span class="string">"electron"</span>) == 0) {
         <span class="keyword">for</span> (<a href="../ListOfTypes.html#Int_t">Int_t</a> i = 0; i &lt; number; i++)
@@ -973,7 +973,7 @@
 
 
 
-<a name="tLaBAB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t ,Bool_t =0)">FidTheta</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="tLaBAB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t k,Bool_t kind=0)">FidTheta</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <a href="../ListOfTypes.html#Double_t">Double_t</a> fid_theta_val;
 
@@ -993,41 +993,41 @@
 
 <a name="NS9LbB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>()
 {
-    <a href="../ListOfTypes.html#Int_t">Int_t</a> sector = <a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t ,Bool_t =0)">FidSector</a>(0);
+    <a href="../ListOfTypes.html#Int_t">Int_t</a> sector = <a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t k,Bool_t kind=0)">FidSector</a>(0);
 
     <a href="../ListOfTypes.html#Double_t">Double_t</a> theta_min_val = kThetaPar0[sector] +
-            kThetaPar1[sector] / pow(<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0),2) +
-            kThetaPar2[sector] * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) +
-            kThetaPar3[sector] / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) +
-            kThetaPar4[sector] *exp(kThetaPar5[sector] * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0));
+            kThetaPar1[sector] / pow(<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0),2) +
+            kThetaPar2[sector] * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) +
+            kThetaPar3[sector] / <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) +
+            kThetaPar4[sector] *exp(kThetaPar5[sector] * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0));
 
     <span class="keyword">return</span> theta_min_val;
 }
 
 
 
-<a name="q75GEB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t ,Int_t )">FidFunc</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> side, <a href="../ListOfTypes.html#Int_t">Int_t</a> param)
+<a name="q75GEB"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t side,Int_t param)">FidFunc</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> side, <a href="../ListOfTypes.html#Int_t">Int_t</a> param)
 {
-    <a href="../ListOfTypes.html#Int_t">Int_t</a> sector = <a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t ,Bool_t =0)">FidSector</a>(0);
+    <a href="../ListOfTypes.html#Int_t">Int_t</a> sector = <a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t k,Bool_t kind=0)">FidSector</a>(0);
     <a href="../ListOfTypes.html#Double_t">Double_t</a> fid_func_val = 0.0; <span class="comment">// dummy value to avoid that uninitialized warning</span>
 
     <span class="keyword">if</span> (side == 0 &amp;&amp; param==0)
         fid_func_val = kFidPar0Low0[sector] +
                     kFidPar0Low1[sector] * exp(kFidPar0Low2[sector] *
-                            (<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) - kFidPar0Low3[sector]));
+                            (<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) - kFidPar0Low3[sector]));
     <span class="keyword">else</span> <span class="keyword">if</span> (side == 1 &amp;&amp; param==0)
         fid_func_val = kFidPar0High0[sector] +
                     kFidPar0High1[sector] * exp(kFidPar0High2[sector] *
-                            (<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) - kFidPar0High3[sector]));
+                            (<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) - kFidPar0High3[sector]));
     <span class="keyword">else</span> <span class="keyword">if</span> (side == 0 &amp;&amp; param==1)
         fid_func_val=kFidPar1Low0[sector] +
-                    kFidPar1Low1[sector] * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) *
-                    exp(kFidPar1Low2[sector] * pow((<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) -
+                    kFidPar1Low1[sector] * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) *
+                    exp(kFidPar1Low2[sector] * pow((<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) -
                                 kFidPar1Low3[sector]),2));
     <span class="keyword">else</span> <span class="keyword">if</span> (side == 1 &amp;&amp; param==1)
         fid_func_val = kFidPar1High0[sector] +
-                    kFidPar1High1[sector] * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) *
-                    exp(kFidPar1High2[sector] * pow((<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t ,Bool_t =0)">Momentum</a>(0) -
+                    kFidPar1High1[sector] * <a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) *
+                    exp(kFidPar1High2[sector] * pow((<a href="../TIdentificator.html#TIdentificator:Momentum" title="Double_t TIdentificator::Momentum(Int_t k,Bool_t kind=0)">Momentum</a>(0) -
                                 kFidPar1High3[sector]),2));
 
     <span class="keyword">return</span> fid_func_val;
@@ -1035,7 +1035,7 @@
 
 
 
-<a name="hK1psE"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t ,Bool_t =0)">FidPhi</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="hK1psE"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t k,Bool_t kind=0)">FidPhi</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <a href="../ListOfTypes.html#Double_t">Double_t</a> fid_phi_val;
 
@@ -1059,15 +1059,15 @@
 
 <a name="jKaKjC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidPhiMin" title="Double_t TIdentificator::FidPhiMin()">FidPhiMin</a>()
 {
-    <a href="../ListOfTypes.html#Int_t">Int_t</a> sector = <a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t ,Bool_t =0)">FidSector</a>(0);
+    <a href="../ListOfTypes.html#Int_t">Int_t</a> sector = <a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t k,Bool_t kind=0)">FidSector</a>(0);
     <a href="../ListOfTypes.html#Double_t">Double_t</a> fid_phi_min_val;
 
-    <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t ,Bool_t =0)">FidTheta</a>(0) &lt;= <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>()) {
+    <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t k,Bool_t kind=0)">FidTheta</a>(0) &lt;= <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>()) {
         fid_phi_min_val = 60. * sector;
         <span class="keyword">return</span> fid_phi_min_val;
     } <span class="keyword">else</span> {
-        fid_phi_min_val = 60. * sector - <a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t ,Int_t )">FidFunc</a>(0,0) *
-                (1 - 1 / (1 + (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t ,Bool_t =0)">FidTheta</a>(0) - <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>()) / <a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t ,Int_t )">FidFunc</a>(0,1)));
+        fid_phi_min_val = 60. * sector - <a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t side,Int_t param)">FidFunc</a>(0,0) *
+                (1 - 1 / (1 + (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t k,Bool_t kind=0)">FidTheta</a>(0) - <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>()) / <a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t side,Int_t param)">FidFunc</a>(0,1)));
         <span class="keyword">return</span> fid_phi_min_val;
     }
 }
@@ -1076,15 +1076,15 @@
 
 <a name="vxYKjC"></a><a href="../ListOfTypes.html#Double_t">Double_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidPhiMax" title="Double_t TIdentificator::FidPhiMax()">FidPhiMax</a>()
 {
-    <a href="../ListOfTypes.html#Int_t">Int_t</a> sector = <a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t ,Bool_t =0)">FidSector</a>(0);
+    <a href="../ListOfTypes.html#Int_t">Int_t</a> sector = <a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t k,Bool_t kind=0)">FidSector</a>(0);
     <a href="../ListOfTypes.html#Double_t">Double_t</a> fid_phi_max_val;
 
-    <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t ,Bool_t =0)">FidTheta</a>(0) &lt;= <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>()){
+    <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t k,Bool_t kind=0)">FidTheta</a>(0) &lt;= <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>()){
         fid_phi_max_val = 60. * sector;
         <span class="keyword">return</span> fid_phi_max_val;
     } <span class="keyword">else</span> {
-        fid_phi_max_val = 60. * sector + <a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t ,Int_t )">FidFunc</a>(1,0) *
-                (1 - 1 / (1 + (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t ,Bool_t =0)">FidTheta</a>(0) - <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>()) / <a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t ,Int_t )">FidFunc</a>(1,1)));
+        fid_phi_max_val = 60. * sector + <a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t side,Int_t param)">FidFunc</a>(1,0) *
+                (1 - 1 / (1 + (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t k,Bool_t kind=0)">FidTheta</a>(0) - <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>()) / <a href="../TIdentificator.html#TIdentificator:FidFunc" title="Double_t TIdentificator::FidFunc(Int_t side,Int_t param)">FidFunc</a>(1,1)));
         <span class="keyword">return</span> fid_phi_max_val;
     }
 }
@@ -1093,9 +1093,9 @@
 
 <a name="N9QvOB"></a><a href="../ListOfTypes.html#Bool_t">Bool_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidCheckCut" title="Bool_t TIdentificator::FidCheckCut()">FidCheckCut</a>()
 {
-    <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t ,Bool_t =0)">FidTheta</a>(0) &gt; <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>() &amp;&amp;
-                <a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t ,Bool_t =0)">FidPhi</a>(0) &gt; <a href="../TIdentificator.html#TIdentificator:FidPhiMin" title="Double_t TIdentificator::FidPhiMin()">FidPhiMin</a>() &amp;&amp;
-                <a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t ,Bool_t =0)">FidPhi</a>(0) &lt; <a href="../TIdentificator.html#TIdentificator:FidPhiMax" title="Double_t TIdentificator::FidPhiMax()">FidPhiMax</a>())
+    <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidTheta" title="Double_t TIdentificator::FidTheta(Int_t k,Bool_t kind=0)">FidTheta</a>(0) &gt; <a href="../TIdentificator.html#TIdentificator:FidThetaMin" title="Double_t TIdentificator::FidThetaMin()">FidThetaMin</a>() &amp;&amp;
+                <a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t k,Bool_t kind=0)">FidPhi</a>(0) &gt; <a href="../TIdentificator.html#TIdentificator:FidPhiMin" title="Double_t TIdentificator::FidPhiMin()">FidPhiMin</a>() &amp;&amp;
+                <a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t k,Bool_t kind=0)">FidPhi</a>(0) &lt; <a href="../TIdentificator.html#TIdentificator:FidPhiMax" title="Double_t TIdentificator::FidPhiMax()">FidPhiMax</a>())
         <span class="keyword">return</span> 1;                               <span class="comment">// Fiducial Cut passed</span>
     <span class="keyword">else</span>
         <span class="keyword">return</span> 0;                               <span class="comment">// Fiducial Cut not passed</span>
@@ -1103,21 +1103,21 @@
 
 
 
-<a name="VMTT"></a><a href="../ListOfTypes.html#Int_t">Int_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t ,Bool_t =0)">FidSector</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
+<a name="VMTT"></a><a href="../ListOfTypes.html#Int_t">Int_t</a> <a href="../TIdentificator.html">TIdentificator</a>::<a href="../TIdentificator.html#TIdentificator:FidSector" title="Int_t TIdentificator::FidSector(Int_t k,Bool_t kind=0)">FidSector</a>(<a href="../ListOfTypes.html#Int_t">Int_t</a> k, <a href="../ListOfTypes.html#Bool_t">Bool_t</a> kind)
 {
     <a href="../ListOfTypes.html#Int_t">Int_t</a> sector;
 
     <span class="keyword">if</span> (kind == 0) {
-        <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t ,Bool_t =0)">FidPhi</a>(k) != 330) {
-            sector = <span class="keyword">int</span>((<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t ,Bool_t =0)">FidPhi</a>(k) + 90) / 60) - 1;
+        <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t k,Bool_t kind=0)">FidPhi</a>(k) != 330) {
+            sector = <span class="keyword">int</span>((<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t k,Bool_t kind=0)">FidPhi</a>(k) + 90) / 60) - 1;
             <span class="keyword">return</span> sector;
         } <span class="keyword">else</span> {
             <span class="keyword">return</span> 5;
         }
     }
     <span class="keyword">else</span> {
-        <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t ,Bool_t =0)">FidPhi</a>(k,1) != 330) {
-            sector = <span class="keyword">int</span>((<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t ,Bool_t =0)">FidPhi</a>(k,1) + 90) / 60) - 1;
+        <span class="keyword">if</span> (<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t k,Bool_t kind=0)">FidPhi</a>(k,1) != 330) {
+            sector = <span class="keyword">int</span>((<a href="../TIdentificator.html#TIdentificator:FidPhi" title="Double_t TIdentificator::FidPhi(Int_t k,Bool_t kind=0)">FidPhi</a>(k,1) + 90) / 60) - 1;
             <span class="keyword">return</span> sector;
         } <span class="keyword">else</span> {
             <span class="keyword">return</span> 5;
@@ -1132,7 +1132,7 @@
 <!--SIGNATURE-->
 <div id="footer">
 
-<em>&raquo; Last changed: 2010-11-02 02:30 </em><em>&raquo; Last generated: 2010-11-02 02:30</em><br />
+<em>&raquo; Last changed: 2010-11-02 02:50 </em><em>&raquo; Last generated: 2010-11-02 02:50</em><br />
 <em>This page has been automatically generated. For comments or suggestions regarding the documentation or ROOT in general please send a mail to <a href="mailto:rootdev@root.cern.ch">ROOT support</a>.</em>
 </div>
 </div>
