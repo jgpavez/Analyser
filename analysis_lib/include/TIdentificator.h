@@ -5,19 +5,6 @@
 
 
 class TIdentificator {
-protected:
-    const Double_t kEbeam;    // The energy of incoming electron beam
-    const Double_t kMpi;      // The mass of the pion
-    const Double_t kGOOD;     // The key for the exceptions (should be improved to avoid it at all !!!)
-
-    TClasTool *fCT;
-    TEVNTClass *fEVNT;
-    TGSIMClass *fGSIM;
-    TCCPBClass *fCCPB;
-    TECPBClass *fECPB;
-    TSCPBClass *fSCPB;
-    TDCPBClass *fDCPB;
-
 public:
     TIdentificator(TClasTool *);
     ~TIdentificator();
@@ -102,6 +89,18 @@ public:
     Int_t FidSector(Int_t, Bool_t = 0);
 
 private:
+    const Double_t kEbeam;    // The energy of incoming electron beam
+    const Double_t kMpi;      // The mass of the pion
+    const Double_t kGOOD;     // The key for the exceptions (should be improved to avoid it at all !!!)
+
+    TClasTool *fCT;
+    TEVNTClass *fEVNT;
+    TGSIMClass *fGSIM;
+    TCCPBClass *fCCPB;
+    TECPBClass *fECPB;
+    TSCPBClass *fSCPB;
+    TDCPBClass *fDCPB;
+
     TString* fPartIds;
 };
 
