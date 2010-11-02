@@ -1,38 +1,7 @@
 #ifndef TIDENTIFICATOR_H
 #define TIDENTIFICATOR_H
 
-
-#ifndef CLASTOOL_THEADERClass
-#include "THEADERClass.h"
-#endif
-
-#ifndef CLASTOOL_TClasTool
 #include "TClasTool.h"
-#endif
-
-#ifndef CLASTOOL_TDSTReader
-#include "TDSTReader.h"
-#endif
-
-#ifndef CLASTOOL_TEVNTClass
-#include "TEVNTClass.h"
-#endif
-
-#ifndef CLASTOOL_TCCPBClass
-#include "TCCPBClass.h"
-#endif
-
-#ifndef CLASTOOL_TECPBClass
-#include "TECPBClass.h"
-#endif
-
-#ifndef CLASTOOL_TGSIMClass
-#include "TGSIMClass.h"
-#endif
-
-//class TClasTool;
-//class TEVNTClass;
-//class TCCPBClass;
 
 
 class TIdentificator {
