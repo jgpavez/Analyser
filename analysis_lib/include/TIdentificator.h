@@ -6,7 +6,7 @@
 
 class TIdentificator {
 public:
-    TIdentificator(TClasTool *);
+    explicit TIdentificator(TClasTool* CT = 0);
     ~TIdentificator();
 
     // HEADER bank

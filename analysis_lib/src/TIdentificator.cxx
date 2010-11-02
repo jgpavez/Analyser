@@ -60,10 +60,11 @@ const Double_t massDeuterium = 0;
 
 
 TIdentificator::TIdentificator(TClasTool *CT)
-    : kEbeam(5.014), kMpi(0.139570), kGOOD(-1000.)
+    : kEbeam(5.014), kMpi(0.139570), kGOOD(-1000.),
+      fCT(CT),
+      fEVNT(0), fGSIM(0), fCCPB(0), fECPB(0), fSCPB(0), fDCPB(0),
+      fPartIds(0)
 {
-    this->fCT = CT;
-    fPartIds = 0;
 }
 
 
@@ -71,8 +72,6 @@ TIdentificator::TIdentificator(TClasTool *CT)
 TIdentificator::~TIdentificator()
 {
     if (fPartIds != 0) delete [] fPartIds;
-    fPartIds = 0;
-    fCT = 0;
 }
 
 
