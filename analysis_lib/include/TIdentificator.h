@@ -93,15 +93,15 @@ private:
     const Double_t kMpi;      // The mass of the pion
     const Double_t kGOOD;     // The key for the exceptions (should be improved to avoid it at all !!!)
 
-    TClasTool *fCT;
-    TEVNTClass *fEVNT;
-    TGSIMClass *fGSIM;
-    TCCPBClass *fCCPB;
-    TECPBClass *fECPB;
-    TSCPBClass *fSCPB;
-    TDCPBClass *fDCPB;
+    TClasTool *fCT;           // Pointer to the main ClasTool object
+    TEVNTClass *fEVNT;        // Pointer to the EVNT object
+    TGSIMClass *fGSIM;        // Pointer to the GSIM object
+    TCCPBClass *fCCPB;        // Pointer to the CCPB object
+    TECPBClass *fECPB;        // Pointer to the ECPB object
+    TSCPBClass *fSCPB;        // Pointer to the SCPB object
+    TDCPBClass *fDCPB;        // Pointer to the DCPB object
 
-    TString* fPartIds;
+    TString* fPartIds;        // Array with the categories of the particles belonging to an event.
 };
 
 #include "TIdentificator.icc"
