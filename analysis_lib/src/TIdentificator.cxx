@@ -1,4 +1,5 @@
 #include "TIdentificator.h"
+#include "massConst.h"
 
 //______________________________________________________________________________
 //
@@ -42,20 +43,6 @@ const Double_t kFidPar1High1[6] = {2        ,0.966175     ,2          ,0.192701 
 const Double_t kFidPar1High2[6] = {-2       ,-2           ,-1.70021   ,-1.27578  ,-0.233492 ,-2};
 const Double_t kFidPar1High3[6] = {0.5      ,0.527823     ,0.68655    ,1.6       ,1.6       ,0.70261};
 
-//mass constants en MeV/c^2
-const Double_t massPi_plus = 139.57018;
-const Double_t massPi_min = 139.57018;
-const Double_t massPi_zero = 134.9766;
-const Double_t massKaon_plus = 493.667;
-const Double_t massKaon_min = 493.667;
-const Double_t massKaon_zero = 497.648;
-const Double_t massMeu = 105.65836;
-const Double_t massAntiMeu = 105.65836;
-const Double_t massGamma = 0;
-const Double_t massProton = 938.272013;
-const Double_t massAntiProton = 938;
-const Double_t massNeutron = 939.565560;
-const Double_t massDeuterium = 0;
 
 //ClassImp(TIdentificator);
 
@@ -397,7 +384,7 @@ Double_t TIdentificator::Nu(Bool_t kind)
 
 
 
-Double_t TIdentificator::ZhPi(Int_t k, Bool_t kind, Double_t Mass)
+Double_t TIdentificator::ZhPi(Int_t k, Bool_t kind, Double_t Mass) // name needs to be switched
 {
     // Return the energy fraction of the born particle, for the particle in
     // the row k of the EVNT bank. It doesn't apply for electron.
@@ -571,6 +558,81 @@ Int_t TIdentificator::FidSector(Int_t k, Bool_t kind)
             return 5;
         }
     }
+}
+
+
+
+Int_t TIdentificator::ElecVertTarg(Int_t k, Bool_t kind)
+{
+    Int_t p_vertex_cut_elec = 0;
+    Double_t ele_liq_lim[6][2];
+    Double_t ele_sol_low[6];
+
+    ele_liq_lim[0][0] = -32.5;
+    ele_liq_lim[0][1] = -28;
+    ele_liq_lim[1][0] = -32.5;
+    ele_liq_lim[1][1] = -27.5;
+    ele_liq_lim[2][0] = -32;
+    ele_liq_lim[2][1] = -27.25;
+    ele_liq_lim[3][0] = -32;
+    ele_liq_lim[3][1] = -27.75;
+    ele_liq_lim[4][0] = -32.5;
+    ele_liq_lim[4][1] = -28.35;
+    ele_liq_lim[5][0] = -33.5;
+    ele_liq_lim[5][1] = -28.75;
+
+    Double_t ele_sol_high = -20;
+
+    ele_sol_low[0] = -26.5;
+    ele_sol_low[1] = -26.;
+    ele_sol_low[2] = -25.65;
+    ele_sol_low[3] = -25.85;
+    ele_sol_low[4] = -26.65;
+    ele_sol_low[5] = -27.15;
+
+    Int_t n_sector = Sector(0);
+
+    if (Z(0) >= ele_liq_lim[n_sector][0] && Z(0) <= ele_liq_lim[n_sector][1])
+        p_vertex_cut_elec = 1;
+    if (Z(0) >= ele_sol_low[n_sector] && Z(0) <= ele_sol_high)
+        p_vertex_cut_elec = 2;
+
+    return p_vertex_cut_elec;
+}
+
+
+
+Bool_t TIdentificator::PionVertTarg(Int_t k, Bool_t kind)
+{
+    Bool_t vertex_cut_pion = 0;
+    Double_t pion_liq_low;
+    Double_t pion_liq_high;
+    Int_t n_ele_sector = Sector(0);
+    Int_t n_pion_sector = Sector(k);
+
+    if (n_pion_sector == 5 || (n_ele_sector == 3 && n_pion_sector == 4) ||
+                (n_pion_sector == 0 && n_ele_sector != 1 && n_ele_sector != 4))
+        pion_liq_low = -36.;
+    else pion_liq_low = -35.;
+
+    if (n_ele_sector == 3 && n_pion_sector == 2)
+        pion_liq_high = -24.;
+    else if ((n_ele_sector == 5 && n_pion_sector != 2 && n_pion_sector != 3) ||
+                (n_pion_sector == 5 && n_ele_sector != 2) ||
+                (n_ele_sector == 0 && n_pion_sector == 0) ||
+                (n_ele_sector == 1 && n_pion_sector == 1) ||
+                (n_pion_sector == 4 && (n_ele_sector == 3 || n_ele_sector == 4)))
+        pion_liq_high = -26.;
+    else
+        pion_liq_high = -25.;
+
+    if (ElecVertTarg(k) == 1 && Z(k) >= pion_liq_low && Z(k) <= pion_liq_high)
+        vertex_cut_pion = 1;
+
+    if (ElecVertTarg(k) == 2 && Z(k) >= -30 && Z(k) <= -18)
+        vertex_cut_pion = 1;
+
+    return vertex_cut_pion;
 }
 
 
