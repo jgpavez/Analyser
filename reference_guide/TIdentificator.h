@@ -21,7 +21,7 @@ public:
     Double_t Pz(Int_t k, Bool_t kind = 0);        // inline
     Double_t X(Int_t k);                          // inline
     Double_t Y(Int_t k);                          // inline
-    Double_t Z(Int_t k);                          // inline
+    Double_t Z(Int_t k, Bool_t kind = 0);         // inline
     Int_t StatCC(Int_t k);                        // inline
     Int_t StatSC(Int_t k);                        // inline
     Int_t StatDC(Int_t k);                        // inline
@@ -67,7 +67,7 @@ public:
     Double_t Q2(Bool_t kind = 0);
     Double_t W(Bool_t kind = 0);
     Double_t Nu(Bool_t kind = 0);
-    Double_t ZhPi(Int_t k, Bool_t kind = 0, Double_t Mass = 0.139);
+    Double_t ZhPi(Int_t k, Double_t Mass, Bool_t kind = 0);
 
     // Correction functions
     Double_t TimeCorr4(Double_t mass, Int_t k);
@@ -88,6 +88,10 @@ public:
     Bool_t FidCheckCut();
     Int_t FidSector(Int_t k, Bool_t kind = 0);
 
+    //Target methods.
+    Int_t ElecVertTarg(Int_t k, Bool_t = 0);
+    Bool_t PionVertTarg(Int_t k, Bool_t = 0);
+
 private:
     const Double_t kEbeam;    // The energy of incoming electron beam
     const Double_t kMpi;      // The mass of the pion
@@ -103,6 +107,5 @@ private:
 
     TString* fPartIds;        // Array with the categories of the particles belonging to an event.
 };
-
 
 #endif
