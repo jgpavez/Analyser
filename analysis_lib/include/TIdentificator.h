@@ -65,7 +65,7 @@ public:
     Double_t Pz(Int_t, Bool_t = 0);
     Double_t X(Int_t);                          //inline
     Double_t Y(Int_t);                          //inline
-    Double_t Z(Int_t);                          //inline
+    Double_t Z(Int_t, Bool_t = 0);              //inline
     Int_t StatCC(Int_t);                        //inline - CCPB key
     Int_t StatSC(Int_t);                        //inline - SCPB key
     Int_t StatDC(Int_t);                        //inline - DCPB key
@@ -115,6 +115,11 @@ public:
 
     // Correction functions
     Double_t TimeCorr4(Double_t, Int_t);
+
+	//Target methods.
+    Int_t ElecVertTarg(Bool_t = 0);
+	Bool_t PionVertTag(Int_t, Bool_t = 0);
+
 
     // Particle Identification cuts
     TString GetCategorization(Int_t);
