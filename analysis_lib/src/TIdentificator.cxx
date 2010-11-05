@@ -43,6 +43,38 @@ const Double_t kFidPar1High1[6] = {2        ,0.966175     ,2          ,0.192701 
 const Double_t kFidPar1High2[6] = {-2       ,-2           ,-1.70021   ,-1.27578  ,-0.233492 ,-2};
 const Double_t kFidPar1High3[6] = {0.5      ,0.527823     ,0.68655    ,1.6       ,1.6       ,0.70261};
 
+//FIDUCIAL CUT FOR PI+
+//For theta_min calculation for pi+
+const Double_t theta_par0_pip[6]={7.00823   ,5.5        ,7.06596     ,6.32763   ,5.5       ,5.5};
+const Double_t theta_par1_pip[6]={0.207249  ,0.1        ,0.127764    ,0.1       ,0.211012  ,0.281549};
+const Double_t theta_par2_pip[6]={0.169287  ,0.506354   ,-0.0663754  ,0.221727  ,0.640963  ,0.358452};
+const Double_t theta_par3_pip[6]={0.1       ,0.1        ,0.100003    ,0.1       ,0.1       ,0.1};
+const Double_t theta_par4_pip[6]={0.1       ,3.30779    ,4.499       ,5.30981   ,3.20347   ,0.776161};
+const Double_t theta_par5_pip[6]={-0.1      ,-0.651811  , -3.1793    ,-3.3461   ,-1.10808  ,-0.462045};
+
+//For parameter 0 of the phi_min calculation for pi+
+const Double_t fid_par0_low0_pip[6]={25.      ,25.      ,25.     ,25.       ,25.       ,25.};
+const Double_t fid_par0_low1_pip[6]={-12.     ,-12.     ,-12.    ,-12       ,-12       ,-12};
+const Double_t fid_par0_low2_pip[6]={1.64476  ,1.51915  ,1.1095  ,0.977829  ,0.955366  ,0.969146};
+const Double_t fid_par0_low3_pip[6]={4.4      ,4.4      ,4.4     ,4.4       ,4.4       ,4.4};
+
+//For parameter 1 of the phi_min calculation for pi+
+const Double_t fid_par1_low0_pip[6]={4.         ,4.   ,2.78427   ,3.58539  ,3.32277    ,4.};
+const Double_t fid_par1_low1_pip[6]={2.         ,2.   ,2.        ,1.38233  ,0.0410601  ,2.};
+const Double_t fid_par1_low2_pip[6]={-0.978469  ,-2.  ,-1.73543  ,-2.      ,-0.953828  ,-2.};
+const Double_t fid_par1_low3_pip[6]={0.5        ,0.5  ,0.5       ,0.5      ,0.5        ,1.08576};
+
+//For parameter 0 of the phi_max calculation for pi+
+const Double_t fid_par0_high0_pip[6]={25.       ,24.8096  ,24.8758  ,25.       ,25.       ,25.};
+const Double_t fid_par0_high1_pip[6]={-11.9735  ,-8.      ,-8.      ,-12.      ,-8.52574  ,-8.};
+const Double_t fid_par0_high2_pip[6]={0.803484  ,0.85143  ,1.01249  ,0.910994  ,0.682825  ,0.88846};
+const Double_t fid_par0_high3_pip[6]={4.40024   ,4.8      ,4.8      ,4.4       ,4.79866   ,4.8};
+
+//For parameter 1 of the phi_max calculation for pi+
+const Double_t fid_par1_high0_pip[6]={2.53606   ,2.65468    ,3.17084  ,2.47156   ,2.42349   ,2.64394};
+const Double_t fid_par1_high1_pip[6]={0.442034  ,0.201149   ,1.27519  ,1.76076   ,1.25399   ,0.15892};
+const Double_t fid_par1_high2_pip[6]={-2.       ,-0.179631  ,-2.      ,-1.89436  ,-2.       ,-2.};
+const Double_t fid_par1_high3_pip[6]={1.02806   ,1.6        ,0.5      ,1.03961   ,0.815707  ,1.31013};
 
 //ClassImp(TIdentificator);
 
@@ -139,21 +171,22 @@ Double_t TIdentificator::PhiLab(Int_t k, Bool_t kind)
     // If kind is zero, the EVNT bank is used. If not, the GSIM bank is used
     // instead.
 
-    Double_t phi;
+    Double_t phi_val;
 
     if (kind == 0) {
-        if (Py(k) >= 0 && Px(k) >= 0)     phi =   fabs(57.3 * atan(Px(k) / Py(k)));
-        else if (Py(k) >= 0 && Px(k) < 0) phi = - fabs(57.3 * atan(Px(k) / Py(k)));
-        else if (Py(k) < 0 && Px(k) >= 0) phi =  180 - fabs(57.3 * atan(Px(k) / Py(k)));
-        else                              phi = -180 + fabs(57.3 * atan(Px(k) / Py(k)));
-    } else {                            // Fix this in case kind != 1
-        if (Py(k,1) >= 0 && Px(k,1) >= 0)     phi =   fabs(57.3 * atan(Px(k,1) / Py(k,1)));
-        else if (Py(k,1) >= 0 && Px(k,1) < 0) phi = - fabs(57.3 * atan(Px(k,1) / Py(k,1)));
-        else if (Py(k,1) < 0 && Px(k,1) >= 0) phi =  180 - fabs(57.3 * atan(Px(k,1) / Py(k,1)));
-        else                                  phi = -180 + fabs(57.3 * atan(Px(k,1) / Py(k,1)));
+        TVector3 v3p(Px(k), Py(k), Pz(k));
+        phi_val = v3p.Phi() * 180. / TMath::Pi();
+    } else {
+        TVector3 v3p(Px(k,1), Py(k,1), Pz(k,1));
+        phi_val = v3p.Phi() * 180. / TMath::Pi();
     }
 
-    return phi;
+    if (phi_val < -30.)
+        phi_val += 360.;
+    else if (phi_val > 330.)
+        phi_val -= 360.;
+
+    return phi_val;
 }
 
 
@@ -320,15 +353,15 @@ Int_t TIdentificator::Sector(Int_t k, Bool_t kind) // Check if it is correct !!!
     // If kind is zero, the EVNT bank is used. If not, the GSIM bank is used
     // instead.
 
-    const Double_t r2d = 57.2957795;
-
-    Double_t pex = Px(k);
-    Double_t pey = Py(k);
-    Double_t phi = TMath::ATan2(pey,pex) * r2d;
-
-    if (phi >= -30) phi = phi+30;
-    else phi = phi + 390;
-    return int(phi / 60.);
+    if ( kind == 0) {
+        if (PhiLab(k) != 330.)
+            return int((PhiLab(k) + 90.) / 60.) - 1;
+        else return 5;
+    } else {
+        if (PhiLab(k,1) != 330.)
+            return int((PhiLab(k,1) + 90.) / 60.) - 1;
+        else return 5;
+    }
 }
 
 

@@ -21,7 +21,7 @@ public:
     Double_t Pz(Int_t k, Bool_t kind = 0);        // inline
     Double_t X(Int_t k);                          // inline
     Double_t Y(Int_t k);                          // inline
-    Double_t Z(Int_t k);                          // inline
+    Double_t Z(Int_t k, Bool_t kind = 0);         // inline
     Int_t StatCC(Int_t k);                        // inline
     Int_t StatSC(Int_t k);                        // inline
     Int_t StatDC(Int_t k);                        // inline
@@ -87,6 +87,8 @@ public:
     Double_t FidPhiMax();
     Bool_t FidCheckCut();
     Int_t FidSector(Int_t k, Bool_t kind = 0);
+
+    //Target methods.
     Int_t ElecVertTarg(Int_t k, Bool_t = 0);
     Bool_t PionVertTarg(Int_t k, Bool_t = 0);
 

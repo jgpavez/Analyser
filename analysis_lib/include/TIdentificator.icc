@@ -134,12 +134,17 @@ inline Double_t TIdentificator::Y(Int_t k)
 
 
 
-inline Double_t TIdentificator::Z(Int_t k)
+inline Double_t TIdentificator::Z(Int_t k, Bool_t kind)
 {
     // Return the Z coordinate for the particle in the row k of the EVNT bank.
 
-    fEVNT = (TEVNTClass*)fCT->GetBankRow("EVNT",k);
-    return fEVNT->Z;
+    if (kind == 0) {
+        fEVNT = (TEVNTClass*)fCT->GetBankRow("EVNT",k);
+        return fEVNT->Z;
+    } else {                            // Fix this
+        fGSIM = (TGSIMClass *) fCT->GetBankRow("GSIM", k);
+        return fGSIM->Z;
+    }
 }
 
 
