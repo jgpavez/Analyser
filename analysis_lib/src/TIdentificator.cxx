@@ -384,7 +384,7 @@ Double_t TIdentificator::Nu(Bool_t kind)
 
 
 
-Double_t TIdentificator::ZhPi(Int_t k, Bool_t kind, Double_t Mass) // name needs to be switched
+Double_t TIdentificator::ZhPi(Int_t k, Double_t Mass, Bool_t kind) // name needs to be switched
 {
     // Return the energy fraction of the born particle, for the particle in
     // the row k of the EVNT bank. It doesn't apply for electron.
@@ -393,7 +393,7 @@ Double_t TIdentificator::ZhPi(Int_t k, Bool_t kind, Double_t Mass) // name needs
     // instead.
 
     if (kind == 0)
-        return sqrt(Mass * Mass + Momentum(k) * Momentum(k)) / Nu(fCT);
+        return sqrt(Mass * Mass + Momentum(k) * Momentum(k)) / Nu(0);
     else                                // Fix this in case kind != 1
         return sqrt(Mass * Mass + Momentum(k,1) * Momentum(k,1)) / Nu(1);
 }
