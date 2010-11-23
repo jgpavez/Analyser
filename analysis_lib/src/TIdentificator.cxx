@@ -473,6 +473,21 @@ Double_t TIdentificator::FidThetaMin()
 
 
 
+Double_t TIdentificator::FidThetaMinPiPlus(Int_t k)
+{
+    Int_t sector = FidSector(k);
+
+    Double_t theta_min_val = kThetaPar0PiPlus[sector] +
+            kThetaPar1PiPlus[sector] / pow(Momentum(k), 2) +
+            kThetaPar2PiPlus[sector] * Momentum(k) +
+            kThetaPar3PiPlus[sector] / Momentum(k) +
+            kThetaPar4PiPlus[sector] * exp(kThetaPar5PiPlus[sector] * Momentum(k));
+
+    return theta_min_val;
+}
+
+
+
 Double_t TIdentificator::FidFunc(Int_t side, Int_t param)
 {
     Int_t sector = FidSector(0);
@@ -498,6 +513,35 @@ Double_t TIdentificator::FidFunc(Int_t side, Int_t param)
                                 kFidPar1High3[sector]),2));
 
     return fid_func_val;
+}
+
+
+
+Double_t TIdentificator::FidFuncPiPlus(Int_t side, Int_t param, Int_t k)
+{
+    Int_t sector = FidSector(k);
+    Double_t fid_func_val_pip = 0.0; // dummy value to avoid that uninitialized warning
+
+    if (side == 0 && param == 0)
+        fid_func_val_pip = kFidPar0Low0PiPlus[sector] +
+                    kFidPar0Low1PiPlus[sector] * exp(kFidPar0Low2PiPlus[sector] *
+                            (Momentum(k) - kFidPar0Low3PiPlus[sector]));
+    else if (side == 1 && param == 0)
+        fid_func_val_pip = kFidPar0High0PiPlus[sector] +
+                    kFidPar0High1PiPlus[sector] * exp(kFidPar0High2PiPlus[sector] *
+                            (Momentum(k) - kFidPar0High3PiPlus[sector]));
+    else if (side == 0 && param == 1)
+        fid_func_val_pip = kFidPar1Low0PiPlus[sector] +
+                    kFidPar1Low1PiPlus[sector] * Momentum(k) *
+                    exp(kFidPar1Low2PiPlus[sector] * pow((Momentum(k) -
+                                kFidPar1Low3PiPlus[sector]), 2));
+    else if (side == 1 && param == 1)
+        fid_func_val_pip = kFidPar1High0PiPlus[sector] +
+                    kFidPar1High1PiPlus[sector] * Momentum(k) *
+                    exp(kFidPar1High2PiPlus[sector] * pow((Momentum(k) -
+                                kFidPar1High3PiPlus[sector]), 2));
+
+    return fid_func_val_pip;
 }
 
 
@@ -558,11 +602,66 @@ Double_t TIdentificator::FidPhiMax()
 
 
 
+Double_t TIdentificator::FidPhiMinPiPlus(Int_t k)
+{
+    Int_t sector = FidSector(k);
+
+    Double_t fid_phi_min_val;
+
+//    if (FidTheta(k) <= FidThetaMinPiPlus(k) || FidTheta(k) >= kFidThetaMax)
+    if (FidTheta(k) <= FidThetaMinPiPlus(k)) {
+        fid_phi_min_val = 60. * sector;
+    } else {
+        fid_phi_min_val = 60. * sector - FidFuncPiPlus(0,0,k) *
+                (1 - 1 / (1 + (FidTheta(k) - FidThetaMinPiPlus(k)) / FidFuncPiPlus(0,1,k)));
+    }
+
+    return fid_phi_min_val;
+}
+
+
+
+Double_t TIdentificator::FidPhiMaxPiPlus(Int_t k)
+{
+    Int_t sector = FidSector(k);
+    Double_t fid_phi_max_val;
+
+//    if (FidTheta(CT, k) <= FidThetaMinPiPlus(k) || FidTheta(k) >= kFidThetaMax)
+    if (FidTheta(k) <= FidThetaMinPiPlus(k)) {
+        fid_phi_max_val = 60. * sector;
+    } else {
+        fid_phi_max_val = 60. * sector + FidFuncPiPlus(1,0,k) *
+                (1 - 1 / (1 + (FidTheta(k) - FidThetaMinPiPlus(k)) / FidFuncPiPlus(1,1,k)));
+    }
+
+    return fid_phi_max_val;
+}
+
+
+
 Bool_t TIdentificator::FidCheckCut()
 {
     if (FidTheta(0) > FidThetaMin() &&
                 FidPhi(0) > FidPhiMin() &&
                 FidPhi(0) < FidPhiMax())
+        return 1;                               // Fiducial Cut passed
+    else
+        return 0;                               // Fiducial Cut not passed
+}
+
+
+
+Bool_t TIdentificator::FidCheckCutPiPlus(Int_t k)
+{
+//    if (FidTheta(CT, k) > FidThetaMinPiPlus(CT, k) &&
+//            FidTheta(k) < fid_theta_max &&
+//            FidPhi(k) > FidPhiMinPiPlus(CT, k) &&
+//            FidPhi(k) < FidPhiMaxPiPlus(CT, k))
+//        return 1;
+
+    if (FidTheta(k) > FidThetaMinPiPlus(k) &&
+            FidPhi(k) > FidPhiMinPiPlus(k) &&
+            FidPhi(k) < FidPhiMaxPiPlus(k))
         return 1;                               // Fiducial Cut passed
     else
         return 0;                               // Fiducial Cut not passed
