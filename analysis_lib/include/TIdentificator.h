@@ -81,16 +81,21 @@ public:
     // Fiducial Cut
     Double_t FidTheta(Int_t k, Bool_t kind = 0);
     Double_t FidThetaMin();
+    Double_t FidThetaMinPiPlus(Int_t k);
     Double_t FidFunc(Int_t side, Int_t param);
+    Double_t FidFuncPiPlus(Int_t side, Int_t param, Int_t k);
     Double_t FidPhi(Int_t k, Bool_t kind = 0);
     Double_t FidPhiMin();
     Double_t FidPhiMax();
+    Double_t FidPhiMinPiPlus(Int_t k);
+    Double_t FidPhiMaxPiPlus(Int_t k);
     Bool_t FidCheckCut();
+    Bool_t FidCheckCutPiPlus(Int_t k);
     Int_t FidSector(Int_t k, Bool_t kind = 0);
 
     //Target methods.
-    Int_t ElecVertTarg(Int_t k, Bool_t = 0);
-    Bool_t PionVertTarg(Int_t k, Bool_t = 0);
+    Int_t ElecVertTarg();
+    Bool_t PionVertTarg(Int_t k);
 
 private:
     const Double_t kEbeam;    // The energy of incoming electron beam
