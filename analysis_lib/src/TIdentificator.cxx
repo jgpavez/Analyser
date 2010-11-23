@@ -416,20 +416,22 @@ Double_t TIdentificator::Nu(Bool_t kind)
 
 
 
-Double_t TIdentificator::Xb(Bool_t kind){
-    if(kind == 0)
-        return Q2(0)/(2*Nu(0)*massProton);
+Double_t TIdentificator::Xb(Bool_t kind)
+{
+    if (kind == 0)
+        return Q2(0) / (2 * Nu(0) * massProton);
     else
-        return Q2(1)/(2*Nu(1)*massProton);
+        return Q2(1) / (2 * Nu(1) * massProton);
 }
 
 
 
-Double_t TIdentificator::Yb(Bool_t kind){
-    if(kind == 0)
-        return Nu(0)/kEbeam;
+Double_t TIdentificator::Yb(Bool_t kind)
+{
+    if (kind == 0)
+        return Nu(0) / kEbeam;
     else
-        return Nu(1)/kEbeam;
+        return Nu(1) / kEbeam;
 }
 
 
