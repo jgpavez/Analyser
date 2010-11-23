@@ -11,70 +11,69 @@
 
 const Double_t kFidThetaMax = 54;
 
-//For theta_min calculation for electron
-const Double_t kThetaPar0[6] = {15        , 15        ,  15       , 15        ,  13       ,  13};
-const Double_t kThetaPar1[6] = {-0.425145 , -1.02217  , -0.7837   , -1.47798  ,   3.47361 ,   3.5714};
-const Double_t kThetaPar2[6] = {-0.666294 , -0.616567 , -0.673602 , -0.647113 ,  -0.34459 ,  -0.398458};
-const Double_t kThetaPar3[6] = { 5.73077  ,  5.51799  ,  8.05224  ,  7.74737  ,   8.45226 ,   9.54265};
-const Double_t kThetaPar4[6] = {10.4976   , 14.0557   , 15.2178   , 16.7291   , -63.4556  , -22.649};
-const Double_t kThetaPar5[6] = {-1.13254  , -1.16189  , -2.08386  , -1.79939  ,  -3.3791  ,  -1.89746};
+// For FidThetaMin calculation for electron
+const Double_t kThetaPar0[6] = { 15        , 15        ,  15       , 15        ,  13       ,  13        };
+const Double_t kThetaPar1[6] = { -0.425145 , -1.02217  , -0.7837   , -1.47798  ,   3.47361 ,   3.5714   };
+const Double_t kThetaPar2[6] = { -0.666294 , -0.616567 , -0.673602 , -0.647113 ,  -0.34459 ,  -0.398458 };
+const Double_t kThetaPar3[6] = {  5.73077  ,  5.51799  ,  8.05224  ,  7.74737  ,   8.45226 ,   9.54265  };
+const Double_t kThetaPar4[6] = { 10.4976   , 14.0557   , 15.2178   , 16.7291   , -63.4556  , -22.649    };
+const Double_t kThetaPar5[6] = { -1.13254  , -1.16189  , -2.08386  , -1.79939  ,  -3.3791  ,  -1.89746  };
 
-//For parameter 0 of the phi_min calculation for electron
-const Double_t kFidPar0Low0[6] = {25     ,25       ,25       ,24.6345 ,23.4731 ,24.8599};
-const Double_t kFidPar0Low1[6] = {-12    ,-12      ,-12      ,-12     ,-12     ,-12};
-const Double_t kFidPar0Low2[6] = {0.5605 ,0.714261 ,0.616788 ,0.62982 ,1.84236 ,1.00513};
-const Double_t kFidPar0Low3[6] = {4.4    ,4.4      ,4.4      ,4.4     ,4.4     ,4.4};
+// For parameter 0 of the FidPhiMin calculation for electron
+const Double_t kFidPar0Low0[6] = {  25      ,  25        ,  25       ,  24.6345  ,  23.4731  ,  24.8599  };
+const Double_t kFidPar0Low1[6] = { -12      , -12        , -12       , -12       , -12       , -12       };
+const Double_t kFidPar0Low2[6] = {   0.5605 ,   0.714261 ,  0.616788 ,   0.62982 ,   1.84236 ,   1.00513 };
+const Double_t kFidPar0Low3[6] = {  4.4     ,  4.4       ,  4.4      ,   4.4     ,   4.4     ,   4.4     };
 
-//For parameter 1 of the phi_min calculation for electron
-const Double_t kFidPar1Low0[6] = {2.1945    ,4        ,3.3352  ,2.22769   ,1.63143   ,3.19807};
-const Double_t kFidPar1Low1[6] = {1.51417   ,1.56882  ,2       ,2         ,1.90179   ,0.173168};
-const Double_t kFidPar1Low2[6] = {-0.354081 ,-2       ,-2      ,-0.760895 ,-0.213751 ,-0.1};
-const Double_t kFidPar1Low3[6] = {0.5       ,0.5      ,1.01681 ,1.31808   ,0.786844  ,1.6};
+// For parameter 1 of the FidPhiMin calculation for electron
+const Double_t kFidPar1Low0[6] = {  2.1945   ,  4        ,  3.3352  ,  2.22769   ,  1.63143   ,  3.19807  };
+const Double_t kFidPar1Low1[6] = {  1.51417  ,  1.56882  ,  2       ,  2         ,  1.90179   ,  0.173168 };
+const Double_t kFidPar1Low2[6] = { -0.354081 , -2        , -2       , -0.760895  , -0.213751  , -0.1      };
+const Double_t kFidPar1Low3[6] = {  0.5      ,  0.5      ,  1.01681 ,  1.31808   ,  0.786844  ,  1.6      };
 
-//For parameter 0 of the phi_max calculation for electron
-const Double_t kFidPar0High0[6] = {25       ,25       ,25       ,25       ,23.7067 ,25};
-const Double_t kFidPar0High1[6] = {-8       ,-10.3277 ,-12      ,-11.3361 ,-12     ,-11.4641};
-const Double_t kFidPar0High2[6] = {0.479446 ,0.380908 ,0.675835 ,0.636018 ,2.92146 ,0.55553};
-const Double_t kFidPar0High3[6] = {4.8      ,4.79964  ,4.4      ,4.4815   ,4.4     ,4.41327};
+// For parameter 0 of the FidPhiMax calculation for electron
+const Double_t kFidPar0High0[6] = { 25       ,  25        ,  25        ,  25        ,  23.7067  ,  25       };
+const Double_t kFidPar0High1[6] = { -8       , -10.3277   , -12        , -11.3361   , -12       , -11.4641  };
+const Double_t kFidPar0High2[6] = {  0.479446 ,  0.380908 ,   0.675835 ,   0.636018 ,   2.92146 ,   0.55553 };
+const Double_t kFidPar0High3[6] = {  4.8      ,  4.79964  ,   4.4      ,   4.4815   ,   4.4     ,   4.41327 };
 
-//For parameter 1 of the phi_max calculation for electron
-const Double_t kFidPar1High0[6] = {3.57349  ,3.02279      ,2.02102    ,3.1948    ,3.0934    ,2.48828};
-const Double_t kFidPar1High1[6] = {2        ,0.966175     ,2          ,0.192701  ,0.821726  ,2};
-const Double_t kFidPar1High2[6] = {-2       ,-2           ,-1.70021   ,-1.27578  ,-0.233492 ,-2};
-const Double_t kFidPar1High3[6] = {0.5      ,0.527823     ,0.68655    ,1.6       ,1.6       ,0.70261};
+// For parameter 1 of the FidPhiMax calculation for electron
+const Double_t kFidPar1High0[6] = {  3.57349 ,  3.02279  ,  2.02102 ,  3.1948   ,  3.0934   ,  2.48828 };
+const Double_t kFidPar1High1[6] = {  2       ,  0.966175 ,  2       ,  0.192701 ,  0.821726 ,  2       };
+const Double_t kFidPar1High2[6] = { -2       , -2        , -1.70021 , -1.27578  , -0.233492 , -2       };
+const Double_t kFidPar1High3[6] = {  0.5     ,  0.527823 ,  0.68655 ,  1.6      ,  1.6      ,  0.70261 };
 
-//FIDUCIAL CUT FOR PI+
-//For theta_min calculation for pi+
-const Double_t theta_par0_pip[6]={7.00823   ,5.5        ,7.06596     ,6.32763   ,5.5       ,5.5};
-const Double_t theta_par1_pip[6]={0.207249  ,0.1        ,0.127764    ,0.1       ,0.211012  ,0.281549};
-const Double_t theta_par2_pip[6]={0.169287  ,0.506354   ,-0.0663754  ,0.221727  ,0.640963  ,0.358452};
-const Double_t theta_par3_pip[6]={0.1       ,0.1        ,0.100003    ,0.1       ,0.1       ,0.1};
-const Double_t theta_par4_pip[6]={0.1       ,3.30779    ,4.499       ,5.30981   ,3.20347   ,0.776161};
-const Double_t theta_par5_pip[6]={-0.1      ,-0.651811  , -3.1793    ,-3.3461   ,-1.10808  ,-0.462045};
+// For FidThetaMinPiPlus calculation for pi+
+const Double_t kThetaPar0PiPlus[6] = {  7.00823   ,  5.5        ,  7.06596   ,  6.32763   ,  5.5       ,  5.5      };
+const Double_t kThetaPar1PiPlus[6] = {  0.207249  ,  0.1        ,  0.127764  ,  0.1       ,  0.211012  ,  0.281549 };
+const Double_t kThetaPar2PiPlus[6] = {  0.169287  ,  0.506354   , -0.0663754 ,  0.221727  ,  0.640963  ,  0.358452 };
+const Double_t kThetaPar3PiPlus[6] = {  0.1       ,  0.1        ,  0.100003  ,  0.1       ,  0.1       ,  0.1      };
+const Double_t kThetaPar4PiPlus[6] = {  0.1       ,  3.30779    ,  4.499     ,  5.30981   ,  3.20347   ,  0.776161 };
+const Double_t kThetaPar5PiPlus[6] = { -0.1       , -0.651811   , -3.1793    , -3.3461    , -1.10808   , -0.462045 };
 
-//For parameter 0 of the phi_min calculation for pi+
-const Double_t fid_par0_low0_pip[6]={25.      ,25.      ,25.     ,25.       ,25.       ,25.};
-const Double_t fid_par0_low1_pip[6]={-12.     ,-12.     ,-12.    ,-12       ,-12       ,-12};
-const Double_t fid_par0_low2_pip[6]={1.64476  ,1.51915  ,1.1095  ,0.977829  ,0.955366  ,0.969146};
-const Double_t fid_par0_low3_pip[6]={4.4      ,4.4      ,4.4     ,4.4       ,4.4       ,4.4};
+// For parameter 0 of the FidPhiMinPiPlus calculation for pi+
+const Double_t kFidPar0Low0PiPlus[6] = {  25.      ,  25.      ,  25.     ,  25.       ,  25.       ,  25.       };
+const Double_t kFidPar0Low1PiPlus[6] = { -12.      , -12.      , -12.     , -12        , -12        , -12        };
+const Double_t kFidPar0Low2PiPlus[6] = {   1.64476 ,   1.51915 ,   1.1095 ,   0.977829 ,   0.955366 ,   0.969146 };
+const Double_t kFidPar0Low3PiPlus[6] = {   4.4     ,   4.4     ,   4.4    ,   4.4      ,   4.4      ,   4.4      };
 
-//For parameter 1 of the phi_min calculation for pi+
-const Double_t fid_par1_low0_pip[6]={4.         ,4.   ,2.78427   ,3.58539  ,3.32277    ,4.};
-const Double_t fid_par1_low1_pip[6]={2.         ,2.   ,2.        ,1.38233  ,0.0410601  ,2.};
-const Double_t fid_par1_low2_pip[6]={-0.978469  ,-2.  ,-1.73543  ,-2.      ,-0.953828  ,-2.};
-const Double_t fid_par1_low3_pip[6]={0.5        ,0.5  ,0.5       ,0.5      ,0.5        ,1.08576};
+// For parameter 1 of the FidPhiMinPiPlus calculation for pi+
+const Double_t kFidPar1Low0PiPlus[6] = {  4.        ,  4.   ,  2.78427 ,  3.58539 ,  3.32277   ,  4.      };
+const Double_t kFidPar1Low1PiPlus[6] = {  2.        ,  2.   ,  2.      ,  1.38233 ,  0.0410601 ,  2.      };
+const Double_t kFidPar1Low2PiPlus[6] = { -0.978469  , -2.   , -1.73543 , -2.      , -0.953828  , -2.      };
+const Double_t kFidPar1Low3PiPlus[6] = {  0.5       ,  0.5  ,  0.5     ,  0.5     ,  0.5       ,  1.08576 };
 
-//For parameter 0 of the phi_max calculation for pi+
-const Double_t fid_par0_high0_pip[6]={25.       ,24.8096  ,24.8758  ,25.       ,25.       ,25.};
-const Double_t fid_par0_high1_pip[6]={-11.9735  ,-8.      ,-8.      ,-12.      ,-8.52574  ,-8.};
-const Double_t fid_par0_high2_pip[6]={0.803484  ,0.85143  ,1.01249  ,0.910994  ,0.682825  ,0.88846};
-const Double_t fid_par0_high3_pip[6]={4.40024   ,4.8      ,4.8      ,4.4       ,4.79866   ,4.8};
+// For parameter 0 of the FidPhiMaxPiPlus calculation for pi+
+const Double_t kFidPar0High0PiPlus[6] = {  25.      , 24.8096  , 24.8758  ,  25.       , 25.       , 25.      };
+const Double_t kFidPar0High1PiPlus[6] = { -11.9735  , -8.      , -8.      , -12.       , -8.52574  , -8.      };
+const Double_t kFidPar0High2PiPlus[6] = {  0.803484 ,  0.85143 ,  1.01249 ,   0.910994 ,  0.682825 ,  0.88846 };
+const Double_t kFidPar0High3PiPlus[6] = {  4.40024  ,  4.8     ,  4.8     ,   4.4      ,  4.79866  ,  4.8     };
 
-//For parameter 1 of the phi_max calculation for pi+
-const Double_t fid_par1_high0_pip[6]={2.53606   ,2.65468    ,3.17084  ,2.47156   ,2.42349   ,2.64394};
-const Double_t fid_par1_high1_pip[6]={0.442034  ,0.201149   ,1.27519  ,1.76076   ,1.25399   ,0.15892};
-const Double_t fid_par1_high2_pip[6]={-2.       ,-0.179631  ,-2.      ,-1.89436  ,-2.       ,-2.};
-const Double_t fid_par1_high3_pip[6]={1.02806   ,1.6        ,0.5      ,1.03961   ,0.815707  ,1.31013};
+// For parameter 1 of the FidPhiMaxPiPlus calculation for pi+
+const Double_t kFidPar1High0PiPlus[6] = {  2.53606  ,  2.65468  ,  3.17084 ,  2.47156 ,  2.42349  ,  2.64394 };
+const Double_t kFidPar1High1PiPlus[6] = {  0.442034 ,  0.201149 ,  1.27519 ,  1.76076 ,  1.25399  ,  0.15892 };
+const Double_t kFidPar1High2PiPlus[6] = { -2.       , -0.179631 , -2.      , -1.89436 , -2.       , -2.      };
+const Double_t kFidPar1High3PiPlus[6] = {  1.02806  ,  1.6      ,  0.5     ,  1.03961 ,  0.815707 ,  1.31013 };
 
 //ClassImp(TIdentificator);
 
