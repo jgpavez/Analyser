@@ -67,7 +67,10 @@ public:
     Double_t Q2(Bool_t kind = 0);
     Double_t W(Bool_t kind = 0);
     Double_t Nu(Bool_t kind = 0);
+    Double_t Xb(Bool_t kind = 0);
+    Double_t Yb(Bool_t kind = 0);
     Double_t ZhPi(Int_t k, Double_t Mass, Bool_t kind = 0);
+
 
     // Correction functions
     Double_t TimeCorr4(Double_t mass, Int_t k);
