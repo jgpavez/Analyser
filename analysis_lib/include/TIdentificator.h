@@ -94,8 +94,8 @@ public:
     Int_t FidSector(Int_t k, Bool_t kind = 0);
 
     //Target methods.
-    Int_t ElecVertTarg(Int_t k, Bool_t = 0);
-    Bool_t PionVertTarg(Int_t k, Bool_t = 0);
+    Int_t ElecVertTarg();
+    Bool_t PionVertTarg(Int_t k);
 
 private:
     const Double_t kEbeam;    // The energy of incoming electron beam

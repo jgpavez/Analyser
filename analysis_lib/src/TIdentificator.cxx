@@ -693,7 +693,7 @@ Int_t TIdentificator::FidSector(Int_t k, Bool_t kind)
 
 
 
-Int_t TIdentificator::ElecVertTarg(Int_t k, Bool_t kind)
+Int_t TIdentificator::ElecVertTarg()
 {
     Int_t p_vertex_cut_elec = 0;
     Double_t ele_liq_lim[6][2];
@@ -733,7 +733,7 @@ Int_t TIdentificator::ElecVertTarg(Int_t k, Bool_t kind)
 
 
 
-Bool_t TIdentificator::PionVertTarg(Int_t k, Bool_t kind)
+Bool_t TIdentificator::PionVertTarg(Int_t k)
 {
     Bool_t vertex_cut_pion = 0;
     Double_t pion_liq_low;
@@ -757,10 +757,10 @@ Bool_t TIdentificator::PionVertTarg(Int_t k, Bool_t kind)
     else
         pion_liq_high = -25.;
 
-    if (ElecVertTarg(k) == 1 && Z(k) >= pion_liq_low && Z(k) <= pion_liq_high)
+    if (ElecVertTarg() == 1 && Z(k) >= pion_liq_low && Z(k) <= pion_liq_high)
         vertex_cut_pion = 1;
 
-    if (ElecVertTarg(k) == 2 && Z(k) >= -30 && Z(k) <= -18)
+    if (ElecVertTarg() == 2 && Z(k) >= -30 && Z(k) <= -18)
         vertex_cut_pion = 1;
 
     return vertex_cut_pion;
