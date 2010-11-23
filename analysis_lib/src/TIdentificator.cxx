@@ -419,9 +419,9 @@ Double_t TIdentificator::Nu(Bool_t kind)
 Double_t TIdentificator::Xb(Bool_t kind)
 {
     if (kind == 0)
-        return Q2(0) / (2 * Nu(0) * massProton);
+        return Q2(0) / (2 * Nu(0) * kMassProton);
     else
-        return Q2(1) / (2 * Nu(1) * massProton);
+        return Q2(1) / (2 * Nu(1) * kMassProton);
 }
 
 
