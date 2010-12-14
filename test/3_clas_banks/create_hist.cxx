@@ -1,8 +1,21 @@
-void main ()
+#if !defined(__CINT__)
+#include "TIdentificator.h"
+#include "TClasTool.h"
+#include "TH2F.h"
+#include "TProfile.h"
+#endif
+
+
+void create_hist(void)
 {
-    gSystem->Load("libClasBanks.so");
+    // Create 2D histograms and profiles of momentum vs betta for every kind
+    // of particle in the given ROOT file.
+
+#if defined(__CINT__)
+    gROOT->Reset();
     gSystem->Load("libClasTool.so");
     gSystem->Load("libTIdentificator.so");
+#endif
 
     TClasTool *input = new TClasTool();
 
@@ -11,24 +24,24 @@ void main ()
 
     TIdentificator *t = new TIdentificator(input);
 
-    Int_t nEntries = input->GetEntries();
-    input->Next();
-
-    TH2F *h1 = new TH2F("electron_2d", "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
-    TH2F *h2 = new TH2F("he_pion_2d", "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
-    TH2F *h3 = new TH2F("le_pion_2d", "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
+    TH2F *h1 = new TH2F("electron_2d",  "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
+    TH2F *h2 = new TH2F("he_pion_2d",   "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
+    TH2F *h3 = new TH2F("le_pion_2d",   "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
     TH2F *h4 = new TH2F("le_proton_2d", "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
-    TH2F *h5 = new TH2F("positron_2d", "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
+    TH2F *h5 = new TH2F("positron_2d",  "Betta vs Momentum", 1000, 0.0, 5.0, 50, 0.0, 1.2);
 
-    TProfile *p1 = new TProfile("electron_pro", "Betta vs Momentum", 1000, 0.0, 5.0, 0.0, 1.2);
-    TProfile *p2 = new TProfile("he_pion_pro", "Betta vs Momentum", 1000, 0.0, 5.0, 0.0, 1.2);
-    TProfile *p3 = new TProfile("le_pion_pro", "Betta vs Momentum", 1000, 0.0, 5.0, 0.0, 1.2);
+    TProfile *p1 = new TProfile("electron_pro",  "Betta vs Momentum", 1000, 0.0, 5.0, 0.0, 1.2);
+    TProfile *p2 = new TProfile("he_pion_pro",   "Betta vs Momentum", 1000, 0.0, 5.0, 0.0, 1.2);
+    TProfile *p3 = new TProfile("le_pion_pro",   "Betta vs Momentum", 1000, 0.0, 5.0, 0.0, 1.2);
     TProfile *p4 = new TProfile("le_proton_pro", "Betta vs Momentum", 1000, 0.0, 5.0, 0.0, 1.2);
-    TProfile *p5 = new TProfile("positron_pro", "Betta vs Momentum", 1000, 0.0, 5.0, 0.0, 1.2);
+    TProfile *p5 = new TProfile("positron_pro",  "Betta vs Momentum", 1000, 0.0, 5.0, 0.0, 1.2);
 
-    for (int k = 0; k < nEntries; k++) {
-        int nRows = input->GetNRows("EVNT");
-        for (int i = 0; i < nRows; i++) {
+    Int_t nEntries = input->GetEntries();
+
+    for (Int_t k = 0; k < nEntries; k++) {
+        input->Next();
+        Int_t nRows = input->GetNRows("EVNT");
+        for (Int_t i = 0; i < nRows; i++) {
             TString category = t->GetCategorization(i);
             if (category == "electron") {
                 h1->Fill(t->Momentum(i), t->Betta(i));
@@ -47,7 +60,6 @@ void main ()
                 p5->Fill(t->Momentum(i), t->Betta(i));
             }
         }
-        input->Next();
     };
 
     TFile *output_h = new TFile("particle_histograms.root","RECREATE","2D Histograms of particles");
@@ -66,5 +78,15 @@ void main ()
     p5->Write();
     output_p->Close();
 
-    cout << "Done." << endl;
+    std::cout << "Done." << std::endl;
 }
+
+
+
+#if !defined(__CINT__)
+int main(int argc, char **argv)
+{
+    create_hist();
+    return 0;
+}
+#endif

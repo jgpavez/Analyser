@@ -20,24 +20,24 @@ LIBS        := $(ROOTGLIBS)                               \
                -L$(CLASTOOL)/slib/Linux -lClasTool        \
                -L../../analysis_lib/slib -lTIdentificator
 
-FILES       :=	main write_tree
+SRC_FILES   := $(wildcard *.cxx)
+EXE_FILES   := $(SRC_FILES:%.cxx=%) 
 
 
-.PHONY: all clean
+.PHONY: all clean distclean
 
-all: $(FILES)
-
-main: main.o
-
-write_tree: write_tree.o
+all: $(EXE_FILES)
 
 
 %: %.o
-	$(LD) $(LDFLAGS) $(LIBS) -o $@ $^
+	$(LD) $(LDFLAGS) $^ $(LIBS) -o $@
 
 %.o: %.cxx
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 
 clean:
-	rm -f $(FILES:%=%.o) $(FILES)
+	rm -f $(EXE_FILES:%=%.o) $(EXE_FILES)
+
+distclean: clean
+	rm -f particle*.root

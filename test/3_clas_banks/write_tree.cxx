@@ -1,16 +1,20 @@
-#include "Riostream.h"
-#include "TApplication.h"
-#include "TROOT.h"
-#include "TFile.h"
-#include "TTree.h"
-#include "TH2F.h"
+#if !defined(__CINT__)
 #include "TIdentificator.h"
 #include "TClasTool.h"
+#include "TH2F.h"
+#endif
 
 
-int main(int argc, char **argv)
+void write_tree()
 {
+    // Create a tree with a branch for betta, momentum and the kind of
+    // particle (id), for every entry in the given ROOT file.
+
+#if defined(__CINT__)
     gROOT->Reset();
+    gSystem->Load("libClasTool.so");
+    gSystem->Load("libTIdentificator.so");
+#endif
 
     TClasTool *input = new TClasTool();
 
@@ -18,8 +22,6 @@ int main(int argc, char **argv)
     input->AddFile("clas_42011_01_1.pass2.root");
 
     TIdentificator *t = new TIdentificator(input);
-
-    Int_t nEntries = input->GetEntries();
 
     TFile *output = new TFile("particle_data.root", "RECREATE", "Data of particles");
     TTree *tree = new TTree("data", "Tree that holds the data");
@@ -31,9 +33,10 @@ int main(int argc, char **argv)
     tree->Branch("moment", &moment, "moment/D");
     tree->Branch("particle", &id, "id/I");
 
-    input->Next();
+    Int_t nEntries = input->GetEntries();
 
     for (Int_t k = 0; k < nEntries; k++) {
+        input->Next();
         Int_t nRows = input->GetNRows("EVNT");
         for (Int_t i = 0; i < nRows; i++) {
             TString category = t->GetCategorization(i);
@@ -53,11 +56,19 @@ int main(int argc, char **argv)
             betta = t->Betta(i);
             tree->Fill();
         }
-        input->Next();
     };
 
     output->Write();
     output->Close();
     cout << "Done." << endl;
+}
+
+
+
+#if !defined(__CINT__)
+int main(int argc, char **argv)
+{
+    write_tree();
     return 0;
 }
+#endif

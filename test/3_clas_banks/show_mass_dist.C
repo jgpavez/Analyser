@@ -1,4 +1,4 @@
-void show_mass_dist()
+void show_mass_dist(void)
 {
     TFile *file_f = new TFile("particle_mass_dist.root");
 

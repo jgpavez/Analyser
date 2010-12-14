@@ -1,3 +1,4 @@
+void show_hist(void)
 {
     TFile *file = new TFile("particle_histograms.root");
 

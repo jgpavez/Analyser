@@ -1,3 +1,4 @@
+void show_prof(void)
 {
     TFile *file_p = new TFile("particle_profiles.root");
 

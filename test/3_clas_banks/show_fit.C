@@ -1,6 +1,6 @@
 #include "betta.C"
 
-void show_fit()
+void show_fit(void)
 {
     TFile *file_f = new TFile("particle_profiles.root");
 
